@@ -1,0 +1,15 @@
+# Java
+target/
+*.jar
+
+# Python
+__pycache__/
+*.pyc
+
+# H2 database
+*.mv.db
+*.trace.db
+
+# Secrets
+.env
+.env.*

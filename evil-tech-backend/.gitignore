@@ -1,0 +1,8 @@
+target/
+data/
+.mvn/apache-maven-*/
+.mvn/*.tar.gz
+.env
+*.log
+.idea/
+*.iml
