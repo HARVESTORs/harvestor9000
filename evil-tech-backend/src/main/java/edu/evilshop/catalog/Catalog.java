@@ -15,6 +15,7 @@ public class Catalog {
         new Phone("phone-emperor", "EmperorPhone Obsidian — a status subscription", "Flagship silicon / fictional", 16, 1024, 5100, 6.8, m("599990"), m("210000"), false, null),
         new Phone("phone-decoy", "Phone of Questionable Value", "Midrange silicon / fictional", 8, 128, 4200, 6.4, m("579990"), m("170000"), false, "phone-emperor")
     );
+
     private static BigDecimal m(String n) { return new BigDecimal(n).setScale(2); }
     public List<Product> all() { return products; }
     public Product get(String id) { return products.stream().filter(p -> p.id().equals(id)).findFirst().orElseThrow(() -> new ShopException(404, "PRODUCT_NOT_FOUND", "That product escaped the boardroom.")); }

@@ -35,6 +35,7 @@ public class ShopState {
         public Visit() {}
         public Visit(Instant time) { startedAt = time; }
     }
+
     public static class Item {
         public String lineId;
         public String productId;
@@ -47,7 +48,22 @@ public class ShopState {
             lineId=id; productId=product; quantity=amount; addedAt=time; entryPrice=price;
         }
     }
-    public record LedgerEntry(String id, Instant at, String kind, BigDecimal amount, String currency, String description, boolean simulated) {}
-    public record Event(String id, Instant at, String code, String message, Map<String, Object> details, boolean simulated) {}
-    public record Replay(String fingerprint, JsonNode response) {}
+
+    public record LedgerEntry(String id,
+                              Instant at,
+                              String kind,
+                              BigDecimal amount,
+                              String currency,
+                              String description,
+                              boolean simulated) {}
+
+    public record Event(String id,
+                        Instant at,
+                        String code,
+                        String message,
+                        Map<String, Object> details,
+                        boolean simulated) {}
+
+    public record Replay(String fingerprint,
+                         JsonNode response) {}
 }

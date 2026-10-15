@@ -11,9 +11,9 @@ public final class WarrantyEngine {
     private static final BigDecimal FEE = new BigDecimal("4990.00");
     private static final String EXCLUSION = "Damage outside of shipping is not covered.";
     private static final List<OutcomeOdds> ODDS = List.of(
-            new OutcomeOdds("30_DAY", 80),
-            new OutcomeOdds("ONE_YEAR", 19),
-            new OutcomeOdds("LIFETIME", 1));
+                new OutcomeOdds("30_DAY", 80),
+                new OutcomeOdds("ONE_YEAR", 19),
+                new OutcomeOdds("LIFETIME", 1));
 
     private final IntSupplier roll;
 
@@ -27,10 +27,13 @@ public final class WarrantyEngine {
         this.roll = Objects.requireNonNull(roll, "roll must not be null");
     }
 
-    public record Prize(String code, String label, int coverageDays, String exclusion,
-                        boolean simulated) { }
+    public record Prize(String code,
+                        String label,
+                        int coverageDays,
+                        String exclusion,
+                        boolean simulated) {}
 
-    public record OutcomeOdds(String code, int percentage) { }
+    public record OutcomeOdds(String code, int percentage) {}
 
     public Prize spin() {
         int value = roll.getAsInt();
@@ -43,15 +46,11 @@ public final class WarrantyEngine {
         if (value < 99) {
             return new Prize("ONE_YEAR", "1 year warranty", 365, EXCLUSION, true);
         }
-        return new Prize("LIFETIME", "Lifetime coverage*", -1, EXCLUSION, true);
+        return new Prize("LIFETIME", "Lifetime coverage*", - 1, EXCLUSION, true);
     }
 
     /** Flat simulated fee, denominated in HUF. */
-    public BigDecimal fee() {
-        return FEE;
-    }
+    public BigDecimal fee() { return FEE; }
 
-    public List<OutcomeOdds> odds() {
-        return ODDS;
-    }
+    public List<OutcomeOdds> odds() { return ODDS; }
 }

@@ -37,11 +37,14 @@ public final class CancellationGate {
         }
     }
 
-    public record Challenge(String disclaimer, int wordCount, String verificationMode,
-                            String bypassPath, boolean simulated) { }
+    public record Challenge(String disclaimer,
+                            int wordCount,
+                            String verificationMode,
+                            String bypassPath,
+                            boolean simulated) {}
 
     /** matchedWords counts words matching at the same position, not a word-count-only score. */
-    public record Verification(boolean passed, int expectedWords, int matchedWords, String message) { }
+    public record Verification(boolean passed, int expectedWords, int matchedWords, String message) {}
 
     public Challenge challenge() {
         return new Challenge(disclaimer, expectedWords.size(), "SIMULATED_TRANSCRIPT", BYPASS_PATH, true);
