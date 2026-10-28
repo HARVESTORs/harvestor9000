@@ -1,1337 +1,555 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="theme-color" content="#0b0b0f"/>
-    <title>EvilTech — Technology, but monetized harder</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>EVILTECH ELEKTRONIKAI KISKERESKEDÉS BT. - HIVATALOS OLDAL (1996)</title>
     <style>
-:root {
-    color-scheme: dark;
-    --bg: #101014;
-    --bg-alt: #181820;
-    --panel: #1a1a22;
-    --panel-border: #353542;
-    --text: #f0f0f5;
-    --muted: #888898;
-    --accent: #ffe600;
-    --danger: #ff2a4b;
-    --ok: #00ff66;
-}
-
-* {
-    box-sizing: border-box;
-    border-radius: 0 !important;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Courier New", monospace;
-    background-color: var(--bg);
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 24px 24px;
-    color: var(--text);
-    line-height: 1.4;
-}
-
-button, input, select, textarea {
-    font-family: inherit;
-    font-size: 13px;
-}
-
-button {
-    cursor: pointer;
-}
-
-a {
-    color: inherit;
-    text-decoration: underline;
-}
-
-.wrap {
-    width: min(1200px, calc(100% - 24px));
-    margin: 0 auto;
-}
-
-/* HAZARD STRIPE BANNER */
-.sim-banner {
-    background: repeating-linear-gradient(
-        -45deg,
-        #ffe600,
-        #ffe600 14px,
-        #000000 14px,
-        #000000 28px
-    );
-    border-bottom: 3px solid #000000;
-    color: #000000;
-    font-size: 11px;
-    font-weight: 900;
-    text-align: center;
-    padding: 6px 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.sim-banner b {
-    background: #000000;
-    color: #ffe600;
-    padding: 2px 8px;
-    display: inline-block;
-    border: 1px solid #ffe600;
-    margin-right: 6px;
-}
-
-/* RAW BRUTALIST NAV */
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-    background: #0a0a0d;
-    border-bottom: 3px solid #ffe600;
-    box-shadow: 0 4px 0 #000;
-}
-
-.nav-inner {
-    height: 64px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.logo {
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 24px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    text-decoration: none;
-    color: #fff;
-    background: #000;
-    padding: 4px 8px;
-    border: 2px solid #fff;
-    box-shadow: 3px 3px 0 #ffe600;
-}
-
-.logo span {
-    color: #ffe600;
-}
-
-.nav-links {
-    display: flex;
-    gap: 16px;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    flex: 1;
-}
-
-.nav-links a {
-    text-decoration: none;
-    padding: 4px 8px;
-    border: 1px solid transparent;
-}
-
-.nav-links a:hover {
-    color: #000;
-    background: #ffe600;
-    border-color: #000;
-}
-
-.icon-btn, .ghost, .primary, .danger-btn {
-    border: 2px solid #000000;
-    background: #25252c;
-    color: #ffffff;
-    padding: 8px 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 3px 3px 0px #000000;
-    transition: transform 0.05s ease, box-shadow 0.05s ease;
-}
-
-.icon-btn:hover, .ghost:hover {
-    background: #33333d;
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0px #000000;
-}
-
-.icon-btn:active, .ghost:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #000000;
-}
-
-.primary {
-    background: #ffe600;
-    color: #000000;
-    border-color: #000000;
-    box-shadow: 4px 4px 0px #000000;
-}
-
-.primary:hover {
-    background: #fff04d;
-    transform: translate(-1px, -1px);
-    box-shadow: 5px 5px 0px #000000;
-}
-
-.primary:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #000000;
-}
-
-.danger-btn {
-    border-color: #000000;
-    color: #ffffff;
-    background: var(--danger);
-}
-
-.danger-btn:hover {
-    background: #ff4764;
-}
-
-.cart-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #000000;
-    border-color: #ffe600;
-    color: #ffe600;
-}
-
-.count {
-    min-width: 20px;
-    height: 20px;
-    background: #ffe600;
-    color: #000000;
-    display: inline-grid;
-    place-items: center;
-    font-weight: 900;
-    font-size: 11px;
-    border: 1px solid #000000;
-}
-
-/* HERO SECTION */
-.hero {
-    padding: 40px 0 30px;
-    border-bottom: 2px dashed #333;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: stretch;
-}
-
-.eyebrow {
-    display: inline-block;
-    border: 2px solid #ff2a4b;
-    background: #1f0b0f;
-    color: #ff6b81;
-    padding: 4px 8px;
-    font-size: 11px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-
-h1 {
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: clamp(38px, 5.5vw, 68px);
-    letter-spacing: -2px;
-    line-height: 0.95;
-    margin: 10px 0 16px;
-    text-transform: uppercase;
-    color: #ffffff;
-    text-shadow: 3px 3px 0 #000000, 5px 5px 0 #333333;
-}
-
-.hero p {
-    font-size: 15px;
-    line-height: 1.5;
-    color: #bbbbcc;
-    max-width: 580px;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 24px;
-}
-
-.hero-note {
-    margin-top: 14px;
-    color: #777785;
-    font-size: 11px;
-    text-transform: uppercase;
-    border-left: 3px solid #ffe600;
-    padding-left: 8px;
-}
-
-/* HERO CARD */
-.hero-card {
-    border: 3px solid #ffe600;
-    background: #000000;
-    padding: 20px;
-    box-shadow: 8px 8px 0px #000000;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.hero-product {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.hero-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    border-bottom: 2px solid #222;
-    padding-bottom: 8px;
-}
-
-.chip {
-    display: inline-block;
-    border: 1px solid #444;
-    background: #111;
-    padding: 4px 8px;
-    color: #aaa;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.chip.hot {
-    color: #000;
-    background: #ffe600;
-    border-color: #000;
-    font-weight: 900;
-}
-
-.hero-device {
-    height: 180px;
-    display: grid;
-    place-items: center;
-    border: 2px dashed #333;
-    background: #09090b;
-    margin: 14px 0;
-}
-
-.vision {
-    width: 220px;
-    height: 90px;
-    background: #18181c;
-    border: 4px solid #ffe600;
-    box-shadow: 5px 5px 0 #000;
-    display: grid;
-    place-items: center;
-    position: relative;
-}
-
-.vision:before {
-    content: "[$]";
-    font-family: monospace;
-    font-size: 40px;
-    font-weight: 900;
-    color: #ffe600;
-}
-
-.hero-card h2 {
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 26px;
-    letter-spacing: -0.5px;
-    margin: 8px 0 4px;
-    text-transform: uppercase;
-}
-
-.price-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 12px;
-    background: #111;
-    border: 2px solid #222;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.price {
-    font-size: 22px;
-    font-weight: 900;
-    color: #ffe600;
-    font-family: ui-monospace, monospace;
-}
-
-.subprice {
-    color: #888899;
-    font-size: 11px;
-}
-
-/* CATALOG & FILTERS */
-.section {
-    padding: 32px 0;
-}
-
-.section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 16px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #333;
-    padding-bottom: 12px;
-}
-
-.section-head h2 {
-    margin: 0;
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 26px;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-}
-
-.section-head p {
-    margin: 4px 0 0;
-    color: #888894;
-    font-size: 12px;
-}
-
-.filters {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.filter {
-    border: 2px solid #333;
-    background: #000;
-    color: #aaa;
-    padding: 6px 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 11px;
-}
-
-.filter:hover {
-    border-color: #666;
-    color: #fff;
-}
-
-.filter.active {
-    background: #ffe600;
-    color: #000;
-    border-color: #000;
-    box-shadow: 2px 2px 0 #000;
-}
-
-/* PRODUCT CARDS */
-.products {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-}
-
-.product-card {
-    min-height: 380px;
-    border: 3px solid #2a2a35;
-    background: #16161c;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 5px 5px 0px #000000;
-    position: relative;
-}
-
-.product-card:hover {
-    border-color: #ffe600;
-    transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0px #000000;
-}
-
-.product-card.disabled {
-    opacity: 0.55;
-    border-style: dashed;
-}
-
-.product-card .topline {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
-    min-height: 26px;
-}
-
-.tag {
-    font-size: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #ccc;
-    background: #252530;
-    border: 1px solid #444;
-    padding: 3px 6px;
-}
-
-.tag.green {
-    color: #000;
-    background: #00ff66;
-    border-color: #000;
-    font-weight: 900;
-}
-
-.tag.red {
-    color: #fff;
-    background: #ff2a4b;
-    border-color: #000;
-    font-weight: 900;
-}
-
-.art {
-    height: 140px;
-    display: grid;
-    place-items: center;
-    background: #0a0a0d;
-    border: 2px solid #222;
-    margin: 10px 0 8px;
-}
-
-.art-orb {
-    width: 80px;
-    height: 80px;
-    border: 3px solid #ffe600;
-    background: #000;
-    color: #ffe600;
-    display: grid;
-    place-items: center;
-    font-size: 38px;
-    box-shadow: 4px 4px 0 #000;
-}
-
-.product-card h3 {
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin: 6px 0 4px;
-}
-
-.tagline {
-    color: #888894;
-    font-size: 12px;
-    line-height: 1.4;
-    min-height: 38px;
-}
-
-.card-foot {
-    margin-top: auto;
-    border-top: 1px dashed #333;
-    padding-top: 10px;
-}
-
-.live-price {
-    font-size: 20px;
-    font-weight: 900;
-    color: #ffe600;
-    font-family: ui-monospace, monospace;
-}
-
-.marketing-price {
-    text-decoration: line-through;
-    color: #666;
-    font-size: 11px;
-    margin-left: 6px;
-}
-
-.actions {
-    display: flex;
-    gap: 6px;
-    margin-top: 10px;
-}
-
-.actions button {
-    flex: 1;
-}
-
-/* METRICS STRIP */
-.compare-strip {
-    margin-top: 24px;
-    border: 2px solid #333;
-    background: #09090c;
-    padding: 12px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    box-shadow: 4px 4px 0 #000;
-}
-
-.metric {
-    padding: 8px 12px;
-    border-right: 2px dashed #222;
-}
-
-.metric:last-child {
-    border-right: 0;
-}
-
-.metric strong {
-    display: block;
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 24px;
-    color: #ffe600;
-}
-
-.metric span {
-    font-size: 11px;
-    color: #888894;
-    text-transform: uppercase;
-}
-
-/* VIP BANNER */
-.newsletter {
-    margin: 30px 0 50px;
-    border: 3px solid #ff2a4b;
-    background: #1a080c;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 6px 6px 0px #000;
-}
-
-.newsletter h3 {
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 22px;
-    margin: 0 0 4px;
-    text-transform: uppercase;
-    color: #ff4d6a;
-}
-
-.newsletter p {
-    color: #ccaabb;
-    margin: 0;
-    font-size: 13px;
-}
-
-/* DRAWER (CART) */
-.drawer-backdrop, .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 60;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.15s ease;
-}
-
-.drawer-backdrop.open, .modal-backdrop.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: min(480px, 100%);
-    background: #111116;
-    border-left: 4px solid #ffe600;
-    z-index: 70;
-    transform: translateX(100%);
-    transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    box-shadow: -10px 0 0 #000;
-}
-
-.drawer.open {
-    transform: none;
-}
-
-.drawer-head {
-    padding: 16px 20px;
-    border-bottom: 2px solid #333;
-    background: #000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.drawer-head h2 {
-    margin: 0;
-    font-family: "Arial Black", Impact, sans-serif;
-    text-transform: uppercase;
-    font-size: 20px;
-}
-
-.drawer-body {
-    padding: 16px 20px;
-    overflow-y: auto;
-    flex: 1;
-}
-
-.drawer-foot {
-    padding: 16px 20px;
-    border-top: 2px solid #333;
-    background: #09090c;
-}
-
-.cart-line {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-    padding: 12px 0;
-    border-bottom: 1px dashed #333;
-}
-
-.cart-line h4 {
-    margin: 0 0 4px;
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 15px;
-}
-
-.cart-line small {
-    color: #888894;
-    font-size: 11px;
-}
-
-.cart-line .right {
-    text-align: right;
-    font-family: monospace;
-    font-weight: 700;
-}
-
-.cart-line .remove {
-    margin-top: 4px;
-    background: #2b0b10;
-    border: 1px solid #ff2a4b;
-    color: #ff2a4b;
-    padding: 2px 6px;
-    font-size: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-.cart-line .remove:hover {
-    background: #ff2a4b;
-    color: #fff;
-}
-
-.totals {
-    display: grid;
-    gap: 6px;
-    margin-bottom: 12px;
-    font-size: 12px;
-}
-
-.total-row {
-    display: flex;
-    justify-content: space-between;
-    color: #aaa;
-}
-
-.total-row.grand {
-    font-size: 16px;
-    color: #ffe600;
-    font-weight: 900;
-    padding-top: 8px;
-    border-top: 2px solid #333;
-}
-
-/* MODALS */
-.modal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: min(720px, calc(100% - 24px));
-    max-height: 90vh;
-    overflow-y: auto;
-    background: #141419;
-    border: 3px solid #ffe600;
-    box-shadow: 10px 10px 0px #000000;
-    z-index: 80;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.15s ease;
-}
-
-.modal.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 20px;
-    background: #000000;
-    border-bottom: 2px solid #333;
-}
-
-.modal-head h2 {
-    margin: 0;
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-
-.modal-body {
-    padding: 20px;
-}
-
-.close {
-    border: 2px solid #000;
-    background: #ff2a4b;
-    color: #fff;
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-    font-weight: 900;
-    box-shadow: 2px 2px 0 #000;
-    cursor: pointer;
-}
-
-.close:hover {
-    background: #ff526e;
-}
-
-.product-modal-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 20px;
-}
-
-.big-art {
-    min-height: 260px;
-    background: #000;
-    border: 2px solid #333;
-    display: grid;
-    place-items: center;
-}
-
-.big-art .art-orb {
-    width: 130px;
-    height: 130px;
-    font-size: 60px;
-    border: 4px solid #ffe600;
-}
-
-.details h3 {
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 24px;
-    text-transform: uppercase;
-    margin: 0 0 6px;
-}
-
-.details p {
-    color: #aaa;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-.feature-list {
-    display: grid;
-    gap: 6px;
-    margin: 14px 0;
-}
-
-.feature {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    background: #0a0a0d;
-    padding: 6px 10px;
-    border: 1px solid #222;
-    font-size: 12px;
-}
-
-.dot {
-    width: 6px;
-    height: 6px;
-    background: #ffe600;
-}
-
-/* FORMS AND LAB CONTROLS */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.field {
-    display: grid;
-    gap: 4px;
-}
-
-.field span {
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #888894;
-}
-
-.field input, .field select, .field textarea {
-    width: 100%;
-    border: 2px solid #333;
-    background: #000000;
-    color: #ffffff;
-    padding: 8px 10px;
-}
-
-.field input:focus, .field select:focus, .field textarea:focus {
-    border-color: #ffe600;
-    outline: none;
-}
-
-.field textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-.full-field {
-    grid-column: 1 / -1;
-}
-
-.fee-list {
-    display: grid;
-    gap: 6px;
-    margin: 12px 0;
-    font-size: 12px;
-}
-
-.fee {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 6px 0;
-    border-bottom: 1px dashed #333;
-}
-
-.quote-box {
-    border: 2px solid #00ff66;
-    background: #051408;
-    padding: 12px;
-    margin-top: 12px;
-}
-
-.quote-box strong {
-    color: #00ff66;
-}
-
-.lab-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.lab-card {
-    border: 2px solid #333;
-    background: #09090c;
-    padding: 14px;
-}
-
-.lab-card h3 {
-    margin: 0 0 10px;
-    font-family: "Arial Black", Impact, sans-serif;
-    font-size: 16px;
-    text-transform: uppercase;
-}
-
-.lab-card .row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-}
-
-.lab-card pre {
-    background: #000000;
-    border: 1px solid #222;
-    padding: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-    color: #00ff66;
-    font-family: monospace;
-    font-size: 11px;
-    white-space: pre-wrap;
-}
-
-.status-dot {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #888;
-}
-
-.status-dot:before {
-    content: "■";
-    font-size: 10px;
-    color: #666;
-}
-
-.status-dot.ok:before {
-    color: var(--ok);
-}
-
-.status-dot.err:before {
-    color: var(--danger);
-}
-
-/* TOASTS */
-.toast-stack {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 100;
-    display: grid;
-    gap: 8px;
-    width: min(380px, calc(100% - 32px));
-}
-
-.toast {
-    border: 2px solid #ffe600;
-    background: #000000;
-    padding: 12px;
-    box-shadow: 4px 4px 0 #000;
-    animation: toastIn 0.15s ease;
-}
-
-.toast strong {
-    display: block;
-    margin-bottom: 2px;
-    font-family: "Arial Black", Impact, sans-serif;
-    text-transform: uppercase;
-    font-size: 13px;
-    color: #ffe600;
-}
-
-.toast p {
-    margin: 0;
-    color: #ddd;
-    font-size: 12px;
-}
-
-@keyframes toastIn {
-    from {
-        transform: translateY(8px);
-        opacity: 0;
-    }
-}
-
-.empty {
-    padding: 30px 10px;
-    text-align: center;
-    color: #777;
-    font-size: 13px;
-    border: 2px dashed #333;
-}
-
-.footer {
-    border-top: 3px solid #ffe600;
-    background: #000;
-    padding: 24px 0 40px;
-    color: #777;
-    font-size: 11px;
-    text-transform: uppercase;
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 950px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .compare-strip {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .metric:nth-child(2) {
-        border-right: 0;
-    }
-    .product-modal-grid, .lab-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 650px) {
-    .nav-links {
-        display: none;
-    }
-    .products {
-        grid-template-columns: 1fr;
-    }
-    .compare-strip {
-        grid-template-columns: 1fr;
-    }
-    .metric {
-        border-right: 0;
-        border-bottom: 1px dashed #333;
-    }
-    .newsletter {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+        * {
+            box-sizing: border-box;
+            font-family: "Times New Roman", Times, Georgia, serif !important;
+            border-radius: 0 !important;
+            animation: none !important;
+            transition: none !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+        body {
+            background-color: #c0c0c0;
+            color: #000000;
+            margin: 10px;
+            padding: 0;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+        .container {
+            width: 860px;
+            max-width: 98%;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 3px double #000000;
+            padding: 16px;
+        }
+        h1, h2, h3, h4 {
+            color: #000000;
+            font-weight: bold;
+            margin: 6px 0;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+        }
+        th, td {
+            border: 1px solid #808080;
+            padding: 6px;
+            vertical-align: top;
+        }
+        th {
+            background: #e0e0e0;
+            text-align: left;
+        }
+        button, input[type="button"], input[type="submit"], .filter {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 13px !important;
+            color: #000000 !important;
+            background: #d4d0c8 !important;
+            border: 2px outset #ffffff !important;
+            padding: 3px 8px !important;
+            margin: 2px !important;
+            cursor: pointer !important;
+            display: inline-block;
+            text-decoration: none !important;
+        }
+        button:active, .filter:active, .filter.active {
+            border-style: inset !important;
+            background: #b0b0b0 !important;
+        }
+        .filter.active {
+            font-weight: bold !important;
+            background: #a0a0a0 !important;
+        }
+        input, select, textarea {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 13px !important;
+            border: 1px solid #000000 !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+            padding: 3px !important;
+        }
+        textarea {
+            width: 100%;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #000000;
+            margin: 12px 0;
+        }
+        .notice-box {
+            background: #f4f4f4;
+            border: 1px dashed #000000;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .product-card {
+            border: 1px solid #000000;
+            background: #fafafa;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card.disabled {
+            background: #e8e8e8;
+            color: #777777;
+        }
+        .product-card h3 {
+            font-size: 16px;
+            margin: 4px 0;
+        }
+        .art-orb {
+            font-size: 32px;
+            text-align: center;
+            border: 1px solid #808080;
+            background: #ffffff;
+            padding: 4px;
+            margin: 4px 0;
+        }
+        .tagline {
+            font-size: 12px;
+            color: #333333;
+            min-height: 32px;
+        }
+        .live-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            border-top: 1px dotted #808080;
+            padding-top: 4px;
+            margin-top: 6px;
+        }
+        .marketing-price {
+            text-decoration: line-through;
+            color: #666666;
+            font-size: 12px;
+            margin-left: 6px;
+        }
+        .topline {
+            font-size: 11px;
+            color: #444444;
+            margin-bottom: 4px;
+        }
+        .tag {
+            border: 1px solid #808080;
+            padding: 1px 4px;
+            background: #eeeeee;
+        }
+        .status-dot {
+            font-family: monospace !important;
+            font-size: 11px;
+            border: 1px solid #000000;
+            padding: 1px 4px;
+        }
+        .status-dot.ok {
+            background: #ffffff;
+            color: #000000;
+        }
+        .status-dot.err {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .drawer-backdrop, .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 90;
+        }
+        .drawer-backdrop.open, .modal-backdrop.open {
+            display: block;
+        }
+        .drawer {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            width: 440px;
+            max-width: 90%;
+            background: #ffffff;
+            border: 3px double #000000;
+            z-index: 100;
+            flex-direction: column;
+            padding: 12px;
+            overflow-y: auto;
+        }
+        .drawer.open {
+            display: flex;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 620px;
+            max-width: 95%;
+            max-height: 90vh;
+            background: #ffffff;
+            border: 3px double #000000;
+            z-index: 101;
+            padding: 14px;
+            overflow-y: auto;
+        }
+        .modal.open {
+            display: block;
+        }
+        .modal-head, .drawer-head {
+            border-bottom: 2px solid #000000;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .toast-stack {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 102;
+            width: 320px;
+        }
+        .toast {
+            background: #ffffff;
+            border: 2px solid #000000;
+            padding: 6px 10px;
+            margin-top: 6px;
+            font-size: 12px;
+        }
+        .toast strong {
+            display: block;
+            border-bottom: 1px dotted #808080;
+            padding-bottom: 2px;
+            margin-bottom: 4px;
+        }
+        .cart-line {
+            border-bottom: 1px dotted #808080;
+            padding: 6px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cart-line .remove {
+            color: #0000ee;
+            text-decoration: underline;
+            background: none;
+            border: none !important;
+            cursor: pointer;
+            padding: 0 !important;
+        }
+    </style>
 </head>
 <body>
-<div class="sim-banner"><b>UNIVERSITY SIMULATION</b> · Fictional products, mock payments, fabricated persuasion. No real
-    checkout occurs.
+
+<div class="container">
+
+    <!-- HEADER SECTION -->
+    <center>
+        <h1>EVILTECH ELEKTRONIKA ÉS HARDVER KERESKEDÉS</h1>
+        <b>Alapítva: 1994 · Tulajdonos és Ügyvezető: Id. Margin Béla</b><br>
+        <i>Telephely: Debrecen, Raktár utca 4. (A sorompó után balra) · Telefon: 52/123-456 (csak munkaidőben)</i>
+    </center>
+
+    <hr>
+
+    <!-- STATUS & CART BAR -->
+    <table border="1" cellpadding="4" cellspacing="0" width="100%">
+        <tr>
+            <td width="30%">
+                <b>Állapot:</b> <span id="backendStatus" class="status-dot">kapcsolódás...</span>
+            </td>
+            <td width="40%" align="center">
+                <button id="cartBtn" style="font-weight: bold !important;">
+                    KOSÁR MEGTEKINTÉSE (<span id="cartCount">0</span> tétel)
+                </button>
+            </td>
+            <td width="30%" align="right">
+                <button id="labBtn">Teszt Labor (Gombok)</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- GRUMPY OLD MAN NOTICE -->
+    <div class="notice-box">
+        <b>KÖZLEMÉNY A TISZTELT VÁSÁRLÓKHOZ:</b><br>
+        A fiam fia felrakta ezt az internetre, hogy "webáruház". Én nem értek a modern villogó honlapokhoz, úgyhogy
+        itt nincsenek csicsás színek meg mozgó képek, mert megfájdul a szemem tőle.
+        Aki vásárolni akar, az megnyomja a szürke gombot és kész.
+        <br><br>
+        <b>FIGYELMEZTETÉS:</b><br>
+        1. A kosárba tett áruk percenként drágulnak 0.5%-kal, mert az idő pénz, nekem sincs egész napom várni magára.<br>
+        2. Kérem ne nyomkodja feleslegesen az F5 billentyűt, mert minden oldalletöltés után +20% áram-pótdíjat számolok fel!<br>
+        3. A Petike nevű unokaöcsémnek ne higgyenek, az a gyerek mindig hazudik, hogy olcsóbban vett laptopot.
+    </div>
+
+    <!-- FEATURED PRODUCT: APPLE VISION POOR -->
+    <h2>Kiemelt raktári tétel:</h2>
+    <table border="2" cellpadding="8" cellspacing="0" width="100%">
+        <tr>
+            <td width="45%" align="center" valign="middle" bgcolor="#f8f8f8">
+                <pre style="font-family: monospace !important; font-size: 12px; margin: 0; line-height: 1.1;">
++------------------------------------+
+|   [ APPLE VISION CSÓRÓ MODELL ]    |
+|                                    |
+|       ( O )            ( O )       |
+|             \________/             |
+|                                    |
+|   SZIGETELŐSZALAGGAL MEGERŐSÍTVE   |
+|   ÁRAMFELVÉTEL: SOK                |
++------------------------------------+
+                </pre>
+                <div class="vision" style="display:none"></div>
+            </td>
+            <td valign="top">
+                <h3>Apple Vision Poor (Csóró Kiadás)</h3>
+                <p>
+                    Ez a készülék megvizsgálja a számláját. Ha kevés a pénze, automatikusan leveszi a felbontást,
+                    mert a szegény embernek minek a retina kijelző.
+                </p>
+                <p>
+                    <b>Aktuális vételár:</b><br>
+                    <font size="+2"><b><span id="heroPrice">Ár betöltése...</span></b></font><br>
+                    <small><i>(A hálózati adapter nem tartozék, azt tessék otthon keresni a fiókban)</i></small>
+                </p>
+                <button data-featured="phone-emperor" style="font-weight: bold !important;">Részletes adatlap és vásárlás</button>
+                <button id="heroLabBtn">Labor beállítások</button>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- CATALOG SECTION -->
+    <h2>Raktáron lévő termékek:</h2>
+    <p>
+        <b>Kategória szűrés:</b>
+        <button class="filter active" data-filter="all">Minden termék</button>
+        <button class="filter" data-filter="Computing">Számítógépek</button>
+        <button class="filter" data-filter="Mobile">Mobiltelefonok</button>
+        <button class="filter" data-filter="Lifestyle">Egyéb holmik</button>
+    </p>
+
+    <div id="productGrid" class="products"></div>
+
+    <hr>
+
+    <!-- PREMIUM SUBSCRIPTION TRAP -->
+    <table border="1" cellpadding="8" cellspacing="0" width="100%" bgcolor="#f0f0f0">
+        <tr>
+            <td>
+                <h3>Prémium Klubtagság (Havi 2990 Ft)</h3>
+                <p>
+                    Aki belép a klubba, annak ugyanaz a bolt jelenik meg, de ha le akarja mondani,
+                    akkor egy 500 szavas fogalmazást kell begépelnie hibátlanul a lemondó bizottságnak.
+                </p>
+                <button id="premiumBtn" style="font-weight: bold !important;">Belépek a Prémium Klubba</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- STATS / PROOF -->
+    <h3 style="margin-top: 16px;">Nyilvántartási adatok:</h3>
+    <table border="1" cellpadding="4" cellspacing="0" width="100%">
+        <tr bgcolor="#e0e0e0">
+            <th>Megnevezés</th>
+            <th>Érték</th>
+            <th>Megjegyzés</th>
+        </tr>
+        <tr>
+            <td>Alkalmazott manipulációs trükkök száma</td>
+            <td><b>20 darab</b></td>
+            <td>A törvényi határon belül (szerintünk)</td>
+        </tr>
+        <tr>
+            <td>Valódi bankkártya levonás</td>
+            <td><b>0 Ft</b></td>
+            <td>Csak papíron létező szimuláció</td>
+        </tr>
+        <tr>
+            <td>Elérhető raktári cikkek száma</td>
+            <td><b>6 darab</b></td>
+            <td>A többi csak dísznek van kitéve</td>
+        </tr>
+        <tr>
+            <td>Tulajdonosi türelem</td>
+            <td><b>0 perc</b></td>
+            <td>Kérjük ne zavarjanak feleslegesen</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <center>
+        <small>
+            EvilTech Kereskedelmi és Szolgáltató Bt. · 4028 Debrecen · Nyomtatva: 1996. október 14.<br>
+            Böngésző ajánlás: Netscape Navigator 3.0 vagy Internet Explorer 4.0 (800x600 képpont felbontás).
+        </small>
+    </center>
+
 </div>
-<nav>
-    <div class="wrap nav-inner">
-        <a class="logo" href="#">evil<span>tech</span></a>
-        <div class="nav-links"><a href="#shop">Shop</a><a href="#why">Why EvilTech</a><a href="#support">Support-ish</a>
-        </div>
-        <span id="backendStatus" class="status-dot">connecting</span>
-        <button class="icon-btn" id="labBtn" title="Simulation controls">⚙ Lab</button>
-        <button class="icon-btn cart-btn" id="cartBtn">Cart <span id="cartCount" class="count">0</span></button>
-    </div>
-</nav>
 
-<main>
-    <section class="hero">
-        <div class="wrap hero-grid">
-            <div>
-                <span class="eyebrow">● New: adaptive poverty rendering</span>
-                <h1>Innovation.<br>Now with fees.</h1>
-                <p>Meet technology designed around one uncompromising principle: extracting maximum shareholder joy from
-                    every fictional shopper.</p>
-                <div class="hero-actions"><a class="primary" style="display:inline-block" href="#shop">Shop terrible
-                    ideas</a>
-                    <button class="ghost" id="heroLabBtn">Open simulation controls</button>
-                </div>
-                <div class="hero-note">Prices shown by the backend may change based on synthetic OS, battery, refresh
-                    count, score and cart age.
-                </div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-product">
-                    <div class="hero-top"><span class="chip hot">MARGIN recommends</span><span class="chip">Vision · allegedly</span>
-                    </div>
-                    <div class="hero-device">
-                        <div class="vision"></div>
-                    </div>
-                    <div>
-                        <h2>Apple Vision Poor</h2>
-                        <div style="color:var(--muted);margin-bottom:18px">Detects bank balance and decreases resolution
-                            accordingly.
-                        </div>
-                        <div class="price-row">
-                            <div>
-                                <div class="price" id="heroPrice">Loading quote…</div>
-                                <div class="subprice">Bank account sold separately.</div>
-                            </div>
-                            <button class="primary" data-featured="phone-emperor">Inspect</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="shop">
-        <div class="wrap">
-            <div class="section-head">
-                <div><h2>Products nobody asked for</h2>
-                    <p>Engineered by committee. Priced by opportunity.</p></div>
-                <div class="filters">
-                    <button class="filter active" data-filter="all">All</button>
-                    <button class="filter" data-filter="Computing">Computing</button>
-                    <button class="filter" data-filter="Mobile">Mobile</button>
-                    <button class="filter" data-filter="Lifestyle">Lifestyle</button>
-                </div>
-            </div>
-            <div id="productGrid" class="products"></div>
-            <div class="compare-strip" id="why">
-                <div class="metric"><strong>20</strong><span>implemented manipulation mechanics</span></div>
-                <div class="metric"><strong>0</strong><span>real payment processors harmed</span></div>
-                <div class="metric"><strong>6</strong><span>backend SKUs powering the live demo</span></div>
-                <div class="metric"><strong>∞</strong><span>executive confidence</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="wrap newsletter" id="support">
-        <div><h3>Join Premium™</h3>
-            <p>Unlock the same website, but with a more emotionally complicated cancellation flow.</p></div>
-        <button class="primary" id="premiumBtn">Become a revenue stream</button>
-    </section>
-</main>
-
-<footer class="footer">
-    <div class="wrap footer-inner">
-        <div>© EvilTech Department of Margin Extraction · SATIRICAL CLASSROOM LAB</div>
-        <div>No real money · No real inventory · No real dignity</div>
-    </div>
-</footer>
-
+<!-- CART DRAWER -->
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 <aside class="drawer" id="cartDrawer">
     <div class="drawer-head">
-        <div><h2>Your burden</h2>
-            <div style="color:var(--muted);font-size:12px">Prices mature negatively over time.</div>
-        </div>
-        <button class="close" id="closeCart">×</button>
+        <h3>A Vevő Kosara (Fizetési kötelezettség)</h3>
+        <button id="closeCart">Bezárás [X]</button>
     </div>
     <div class="drawer-body" id="cartBody">
-        <div class="empty">Your cart has not yet disappointed you.</div>
+        <p>A kosár üres. Nem vásárolt semmit.</p>
     </div>
-    <div class="drawer-foot">
-        <div class="totals">
-            <div class="total-row"><span>Live subtotal</span><span id="cartSubtotal">0 HUF</span></div>
-            <div class="total-row grand"><span>Before surprise fees</span><span id="cartGrand">0 HUF</span></div>
-        </div>
-        <button class="primary" style="width:100%" id="checkoutOpenBtn">Proceed irresponsibly</button>
+    <div style="border-top: 2px solid #000000; padding-top: 8px; margin-top: auto;">
+        <table border="0" cellpadding="2" width="100%">
+            <tr><td>Részösszeg:</td><td align="right" id="cartSubtotal">0 HUF</td></tr>
+            <tr><td><b>Végösszeg (díjakkal):</b></td><td align="right"><b><span id="cartGrand">0 HUF</span></b></td></tr>
+        </table>
+        <br>
+        <button id="checkoutOpenBtn" style="width: 100%; font-weight: bold !important; padding: 6px !important;">
+            Tovább a pénztárhoz és fizetés
+        </button>
     </div>
 </aside>
 
+<!-- PRODUCT MODAL -->
 <div class="modal-backdrop" id="modalBackdrop"></div>
-
 <section class="modal" id="productModal">
     <div class="modal-head">
-        <div><span class="chip" id="productModalCategory">Product</span></div>
-        <button class="close" data-close-modal>×</button>
+        <h3 id="productModalName">Termék adatlap</h3>
+        <button data-close-modal>Bezárás [X]</button>
     </div>
     <div class="modal-body">
-        <div class="product-modal-grid">
-            <div class="big-art">
-                <div class="art-orb" id="productModalArt">▣</div>
-            </div>
-            <div class="details"><h3 id="productModalName">Product</h3>
-                <p id="productModalTagline"></p>
-                <div class="feature-list" id="productFeatures"></div>
-                <div class="live-price" id="productModalPrice">—</div>
-                <div id="productModalCompare" class="subprice"></div>
-                <div class="actions" style="margin-top:18px">
-                    <button class="primary" id="modalAddBtn">Add to cart</button>
-                    <button class="ghost" id="warrantyBtn">Spin warranty</button>
-                </div>
-                <button class="ghost" style="width:100%;margin-top:8px" id="attentionBtn">Ask if it's still in stock
-                </button>
-            </div>
-        </div>
+        <span id="productModalCategory" class="tag">Kategória</span>
+        <div class="art-orb" id="productModalArt">▣</div>
+        <p><i id="productModalTagline"></i></p>
+        <div id="productFeatures" style="border: 1px dotted #808080; padding: 6px; margin: 6px 0; background: #fafafa;"></div>
+        <p>
+            <b>Egységár: </b><span class="live-price" id="productModalPrice">—</span>
+            <span id="productModalCompare" class="marketing-price"></span>
+        </p>
+        <hr>
+        <button id="modalAddBtn" style="font-weight: bold !important;">Kosárba teszem</button>
+        <button id="warrantyBtn">Garancia sorsolás (4990 Ft)</button>
+        <button id="attentionBtn">Rákérdezés raktárkészletre</button>
     </div>
 </section>
 
+<!-- CHECKOUT MODAL -->
 <section class="modal" id="checkoutModal">
     <div class="modal-head">
-        <div><h2>Checkout</h2>
-            <div style="color:var(--muted);font-size:12px">Every fee is fictional, but unfortunately visible.</div>
-        </div>
-        <button class="close" data-close-modal>×</button>
+        <h3>Pénztár és Számlázás</h3>
+        <button data-close-modal>Bezárás [X]</button>
     </div>
     <div class="modal-body">
-        <div class="form-grid">
-            <label class="field"><span>Installments</span><select id="months">
-                <option value="0">Pay in full</option>
-                <option value="3">3 months</option>
-                <option value="6">6 months</option>
-                <option value="12">12 months</option>
-                <option value="24">24 months</option>
-                <option value="36">36 months</option>
-            </select></label>
-            <label class="field"><span>Coupon</span><input id="coupon" placeholder="Try HELL15"/></label>
-            <label class="field full-field"
-                   style="display:flex;grid-template-columns:auto 1fr;align-items:center">
-                <input id="includePremium"
-                       type="checkbox" checked
-                       style="width:auto">
-                <span>Include preselected Premium membership because apparently consent is decorative.</span>
-            </label>
-        </div>
-        <button class="primary" style="width:100%;margin-top:14px" id="quoteBtn">Reveal final price</button>
-        <div id="quoteArea"></div>
+        <table border="1" cellpadding="6" cellspacing="0" width="100%">
+            <tr>
+                <td><b>Részletfizetés választás (50% kamat):</b></td>
+                <td>
+                    <select id="months">
+                        <option value="0">Egy összegben kifizetem</option>
+                        <option value="3">3 hónapos részlet</option>
+                        <option value="6">6 hónapos részlet</option>
+                        <option value="12">12 hónapos részlet</option>
+                        <option value="24">24 hónapos részlet</option>
+                        <option value="36">36 hónapos részlet</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Kupon kód beírása:</b></td>
+                <td><input id="coupon" placeholder="HELL15"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label>
+                        <input id="includePremium" type="checkbox" checked>
+                        <b>Bejelölve hagyom a Prémium tagságot (havi 2990 Ft)</b>
+                    </label>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button id="quoteBtn" style="width: 100%; font-weight: bold !important;">Árajánlat és rejtett költségek kiszámítása</button>
+        <div id="quoteArea" style="margin-top: 8px;"></div>
     </div>
 </section>
 
+<!-- LAB MODAL -->
 <section class="modal" id="labModal">
     <div class="modal-head">
-        <div><h2>Simulation controls</h2>
-            <div style="color:var(--muted);font-size:12px">Backend testing tools hidden behind a respectable
-                storefront.
-            </div>
-        </div>
-        <button class="close" data-close-modal>×</button>
+        <h3>Műszaki Ellenőrző Laboratórium</h3>
+        <button data-close-modal>Bezárás [X]</button>
     </div>
     <div class="modal-body">
-        <div class="lab-grid">
-            <div class="lab-card"><h3>Synthetic shopper context</h3>
-                <div class="form-grid"><label class="field"><span>Operating system</span><select id="os">
-                    <option>UNKNOWN</option>
-                    <option>LINUX</option>
-                    <option>WINDOWS</option>
-                    <option>MACOS</option>
-                    <option>IOS</option>
-                    <option>ANDROID</option>
-                </select></label><label class="field"><span>Battery %</span><input id="battery" type="number" min="0"
-                                                                                   max="100"
-                                                                                   placeholder="blank = unknown"></label><label
-                        class="field full-field" style="display:flex;grid-template-columns:auto 1fr;align-items:center"><input
-                        id="charging" type="checkbox" style="width:auto"><span>Charging</span></label></div>
-                <button class="primary" style="width:100%;margin-top:12px" id="applyContextBtn">Apply context</button>
-            </div>
-            <div class="lab-card"><h3>Demo time</h3>
-                <p style="color:var(--muted);font-size:13px">Advance server-side simulated time instead of waiting.</p>
-                <div class="row">
-                    <button class="ghost" data-advance="45">+45 sec</button>
-                    <button class="ghost" data-advance="60">+1 min</button>
-                    <button class="ghost" data-advance="300">+5 min</button>
-                </div>
-                <button class="ghost" style="width:100%;margin-top:12px" id="refreshDataBtn">Refresh storefront data
-                </button>
-            </div>
-            <div class="lab-card"><h3>Subscription trap</h3>
-                <div class="row">
-                    <button class="ghost" id="subscriptionStatusBtn">Status</button>
-                    <button class="ghost" id="subscribeBtn">Activate</button>
-                    <button class="danger-btn" id="cancelDirectBtn">Direct cancel</button>
-                </div>
-                <label class="field" style="margin-top:12px"><span>500-word transcript challenge</span><textarea
-                        id="transcript" placeholder="Load status to see the challenge"></textarea></label>
-                <button class="ghost" style="width:100%;margin-top:8px" id="cancelTranscriptBtn">Submit transcript
-                </button>
-                <pre id="challengeLog">Challenge not loaded.</pre>
-            </div>
-            <div class="lab-card"><h3>Backend inspection</h3>
-                <div class="row">
-                    <button class="ghost" data-inspect="/api/me">Shopper</button>
-                    <button class="ghost" data-inspect="/api/orders">Orders</button>
-                    <button class="ghost" data-inspect="/api/ledger">Ledger</button>
-                    <button class="ghost" data-inspect="/api/events">Events</button>
-                </div>
-                <pre id="apiLog">Storefront ready.</pre>
-            </div>
-        </div>
+        <b>Kliens eszköz adatok kézi felülbírálata:</b>
+        <table border="1" cellpadding="4" cellspacing="0" width="100%">
+            <tr>
+                <td>Operációs rendszer:</td>
+                <td>
+                    <select id="os">
+                        <option>UNKNOWN</option>
+                        <option>LINUX</option>
+                        <option>WINDOWS</option>
+                        <option>MACOS</option>
+                        <option>IOS</option>
+                        <option>ANDROID</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Akkumulátor töltöttség:</td>
+                <td><input id="battery" type="number" min="0" max="100" style="width: 60px;"> %</td>
+            </tr>
+            <tr>
+                <td>Töltő állapot:</td>
+                <td><label><input id="charging" type="checkbox"> Töltőre van dugva</label></td>
+            </tr>
+        </table>
+        <button id="applyContextBtn">Beállítások érvényesítése</button>
+        <hr>
+        <b>Idő előretekerése (szimuláció):</b><br>
+        <button data-advance="45">+45 másodperc</button>
+        <button data-advance="60">+1 perc</button>
+        <button data-advance="300">+5 perc</button>
+        <button id="refreshDataBtn">Adatok frissítése</button>
+        <hr>
+        <b>Klubtagság és Lemondás:</b><br>
+        <button id="subscriptionStatusBtn">Státusz lekérdezése</button>
+        <button id="subscribeBtn">Belépés a klubba</button>
+        <button id="cancelDirectBtn">Azonnali lemondás (kiskapu)</button>
+        <br><br>
+        <b>500 szavas kötelező lemondó szöveg:</b><br>
+        <textarea id="transcript" rows="3" placeholder="Másolja be ide a szöveget..."></textarea>
+        <button id="cancelTranscriptBtn">Fogalmazás benyújtása</button>
+        <pre id="challengeLog" style="border:1px solid #000; background:#f0f0f0; padding:4px; max-height:80px; overflow:auto;">Még nem kérte le a feladványt.</pre>
+        <hr>
+        <b>Belső adatbázis napló:</b><br>
+        <button data-inspect="/api/me">Vevő adatai</button>
+        <button data-inspect="/api/orders">Rendelések</button>
+        <button data-inspect="/api/ledger">Főkönyvi tételek</button>
+        <button data-inspect="/api/events">Naplózott események</button>
+        <pre id="apiLog" style="border:1px solid #000; background:#f0f0f0; padding:4px; max-height:120px; overflow:auto;">Rendszer készen áll.</pre>
     </div>
 </section>
 
@@ -1881,4 +1099,6 @@ h1 {
     })();
 </script>
 </body>
+</html>
+
 </html>
