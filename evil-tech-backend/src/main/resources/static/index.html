@@ -547,7 +547,7 @@
             white-space: nowrap
         }
 
-        .drawer-backdrop, .modal-backdrop, .captcha-backdrop {
+        .drawer-backdrop, .modal-backdrop {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, .58);
@@ -605,6 +605,31 @@
             padding: 18px 22px;
             border-top: 1px solid var(--line);
             background: #0b0d12
+        }
+
+        .captcha {
+            margin: auto;
+            align-self: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: min(700px, 100%);
+            background: #0e1117;
+            border-left: 1px solid var(--line);
+            z-index: 70;
+            transform: scale(0%);
+            transition: .25s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -25px 0 70px rgba(0, 0, 0, .4)
+        }
+
+        .captcha.open {
+            transform: scale(100%);
+            transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+            transition-duration: .5s;
         }
 
         .cart-line {
@@ -693,37 +718,6 @@
         }
 
         .modal-body {
-            padding: 24px
-        }
-
-        .captcha {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -46%) scale(.98);
-            width: min(760px, calc(100% - 28px));
-            max-height: 88vh;
-            overflow: auto;
-            background: #101319;
-            border: 1px solid var(--line);
-            border-radius: 26px;
-            z-index: 80;
-            opacity: 0;
-            pointer-events: none;
-            transition: .18s;
-            box-shadow: var(--shadow)
-        }
-
-        .captcha-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            gap: 18px;
-            padding: 22px 24px;
-            border-bottom: 1px solid var(--line)
-        }
-
-        .captcha-body {
             padding: 24px
         }
 
@@ -1175,7 +1169,7 @@
 </aside>
 
 <div class="drawer-backdrop" id="captchaBackdrop"></div>
-<aside class="drawer" id="captcha">
+<aside class="captcha" id="captcha">
     <div class="drawer-head">
         <div>
             <h5>Select all squares with</h5>
@@ -1189,7 +1183,6 @@
         <button class="captcha-verify" id="captcha-verify-button">VERIFY</button>
     </div>
 </aside>
-
 
 <div class="modal-backdrop" id="modalBackdrop"></div>
 

@@ -10,7 +10,6 @@ import edu.evilshop.mechanics.*;
 import edu.evilshop.pricing.*;
 import edu.evilshop.store.ShopState.*;
 
-import java.io.File;
 import java.math.*;
 import java.time.*;
 import java.util.*;
