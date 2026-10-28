@@ -1,1265 +1,555 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="theme-color" content="#0b0b0f"/>
-    <title>EvilTech — Technology, but monetized harder</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>EVILTECH ELEKTRONIKAI KISKERESKEDÉS BT. - HIVATALOS OLDAL (1996)</title>
     <style>
-        :root {
-            color-scheme: dark;
-            --bg: #08090c;
-            --bg2: #101218;
-            --panel: #13161d;
-            --panel2: #191d26;
-            --soft: #202632;
-            --text: #f6f7fb;
-            --muted: #9ca5b5;
-            --line: #2b3240;
-            --accent: #a7ff5a;
-            --accent2: #74dcff;
-            --danger: #ff6f7d;
-            --warn: #ffd166;
-            --ok: #73e2a7;
-            --shadow: 0 24px 80px rgba(0, 0, 0, .35);
-            --radius: 22px;
-        }
-
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
+            font-family: "Times New Roman", Times, Georgia, serif !important;
+            border-radius: 0 !important;
+            animation: none !important;
+            transition: none !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
         }
-
-        html {
-            scroll-behavior: smooth
-        }
-
         body {
-            margin: 0;
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at 16% -10%, rgba(116, 220, 255, .13), transparent 32rem),
-            radial-gradient(circle at 90% 5%, rgba(167, 255, 90, .1), transparent 28rem), var(--bg);
-            color: var(--text)
-        }
-
-        button, input, select, textarea {
-            font: inherit
-        }
-
-        button {
-            cursor: pointer
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none
-        }
-
-        .wrap {
-            width: min(1220px, calc(100% - 34px));
-            margin: 0 auto
-        }
-
-        .sim-banner {
-            background: #11151d;
-            border-bottom: 1px solid #222936;
-            color: #b6bfce;
-            font-size: 12px;
-            text-align: center;
-            padding: 8px 14px
-        }
-
-        .sim-banner b {
-            color: var(--accent)
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 30;
-            background: rgba(8, 9, 12, .83);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(255, 255, 255, .06)
-        }
-
-        .nav-inner {
-            height: 72px;
-            display: flex;
-            align-items: center;
-            gap: 18px
-        }
-
-        .logo {
-            font-size: 21px;
-            font-weight: 950;
-            letter-spacing: -.7px
-        }
-
-        .logo span {
-            color: var(--accent)
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 18px;
-            color: var(--muted);
+            background-color: #c0c0c0;
+            color: #000000;
+            margin: 10px;
+            padding: 0;
             font-size: 14px;
-            flex: 1
+            line-height: 1.3;
         }
-
-        .nav-links a:hover {
-            color: var(--text)
+        .container {
+            width: 860px;
+            max-width: 98%;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 3px double #000000;
+            padding: 16px;
         }
-
-        .icon-btn, .ghost, .primary, .danger-btn {
-            border: 1px solid var(--line);
-            background: var(--panel);
-            color: var(--text);
-            border-radius: 14px;
-            padding: 10px 14px;
-            transition: .18s ease
+        h1, h2, h3, h4 {
+            color: #000000;
+            font-weight: bold;
+            margin: 6px 0;
         }
-
-        .icon-btn:hover, .ghost:hover {
-            transform: translateY(-1px);
-            border-color: #4b566c
-        }
-
-        .primary {
-            background: var(--accent);
-            color: #10130c;
-            border-color: var(--accent);
-            font-weight: 850
-        }
-
-        .primary:hover {
-            filter: brightness(1.05);
-            transform: translateY(-1px)
-        }
-
-        .danger-btn {
-            border-color: #6c3037;
-            color: #ffbac1;
-            background: #231216
-        }
-
-        .cart-btn {
-            display: flex;
-            align-items: center;
-            gap: 9px
-        }
-
-        .count {
-            min-width: 22px;
-            height: 22px;
-            border-radius: 999px;
-            background: var(--accent);
-            color: #0b0e08;
-            display: grid;
-            place-items: center;
-            font-weight: 900;
-            font-size: 12px
-        }
-
-        .hero {
-            padding: 72px 0 42px
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns:1.08fr .92fr;
-            gap: 30px;
-            align-items: center
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            gap: 8px;
-            align-items: center;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, .03);
-            color: var(--muted);
-            padding: 7px 10px;
-            border-radius: 999px;
-            font-size: 12px
-        }
-
         h1 {
-            font-size: clamp(45px, 7vw, 84px);
-            letter-spacing: -4px;
-            line-height: .94;
-            margin: 18px 0 22px;
-            max-width: 780px
-        }
-
-        .hero p {
-            font-size: 18px;
-            line-height: 1.65;
-            color: var(--muted);
-            max-width: 650px
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 11px;
-            flex-wrap: wrap;
-            margin-top: 28px
-        }
-
-        .hero-note {
-            margin-top: 18px;
-            color: #7f8999;
-            font-size: 12px
-        }
-
-        .hero-card {
-            min-height: 470px;
-            border-radius: 32px;
-            padding: 24px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #28313e;
-            background: linear-gradient(145deg, #171c25, #0d0f14 58%, #151b16);
-            box-shadow: var(--shadow)
-        }
-
-        .hero-card:before {
-            content: "";
-            position: absolute;
-            width: 360px;
-            height: 360px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(167, 255, 90, .23), transparent 65%);
-            right: -80px;
-            top: -90px
-        }
-
-        .hero-card:after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, .04), transparent 61%);
-            pointer-events: none
-        }
-
-        .hero-product {
-            height: 100%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between
-        }
-
-        .hero-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid #303a48;
-            background: #151a22;
-            padding: 6px 9px;
-            border-radius: 999px;
-            color: #b5c0d2;
-            font-size: 11px
-        }
-
-        .chip.hot {
-            color: #e8ffcf;
-            border-color: #47642d;
-            background: #182313
-        }
-
-        .hero-device {
-            height: 235px;
-            display: grid;
-            place-items: center;
-            position: relative
-        }
-
-        .vision {
-            width: 270px;
-            height: 128px;
-            border-radius: 80px 80px 58px 58px;
-            background: linear-gradient(155deg, #e8edf2, #8e99a5 35%, #2a3038 42%, #0b0d10 69%, #47515c);
-            border: 6px solid #2d333a;
-            box-shadow: 0 40px 70px rgba(0, 0, 0, .5), inset 0 0 0 2px rgba(255, 255, 255, .13);
-            transform: rotate(-5deg)
-        }
-
-        .vision:before {
-            content: "$";
-            position: absolute;
-            inset: 16px 21px;
-            border-radius: 65px;
-            background: linear-gradient(120deg, #0b0d11, #16281f, #0d1115);
-            display: grid;
-            place-items: center;
-            color: var(--accent);
-            font-size: 62px;
-            font-weight: 1000;
-            text-shadow: 0 0 26px rgba(167, 255, 90, .55)
-        }
-
-        .hero-card h2 {
-            font-size: 30px;
-            letter-spacing: -1.2px;
-            margin: 0 0 5px
-        }
-
-        .price-row {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 14px
-        }
-
-        .price {
             font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -.8px
+            text-align: center;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 6px;
         }
-
-        .subprice {
-            color: var(--muted);
-            font-size: 12px;
-            margin-top: 4px
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
         }
-
-        .section {
-            padding: 38px 0
+        th, td {
+            border: 1px solid #808080;
+            padding: 6px;
+            vertical-align: top;
         }
-
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 20px;
-            margin-bottom: 18px
+        th {
+            background: #e0e0e0;
+            text-align: left;
         }
-
-        .section-head h2 {
-            margin: 0;
-            font-size: 30px;
-            letter-spacing: -1.2px
+        button, input[type="button"], input[type="submit"], .filter {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 13px !important;
+            color: #000000 !important;
+            background: #d4d0c8 !important;
+            border: 2px outset #ffffff !important;
+            padding: 3px 8px !important;
+            margin: 2px !important;
+            cursor: pointer !important;
+            display: inline-block;
+            text-decoration: none !important;
         }
-
-        .section-head p {
-            margin: 5px 0 0;
-            color: var(--muted)
+        button:active, .filter:active, .filter.active {
+            border-style: inset !important;
+            background: #b0b0b0 !important;
         }
-
-        .filters {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap
-        }
-
-        .filter {
-            border: 1px solid var(--line);
-            background: #10131a;
-            color: #aeb7c7;
-            border-radius: 999px;
-            padding: 8px 12px
-        }
-
         .filter.active {
-            background: #e8edf4;
-            color: #101217;
-            border-color: #e8edf4
+            font-weight: bold !important;
+            background: #a0a0a0 !important;
         }
-
+        input, select, textarea {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 13px !important;
+            border: 1px solid #000000 !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+            padding: 3px !important;
+        }
+        textarea {
+            width: 100%;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #000000;
+            margin: 12px 0;
+        }
+        .notice-box {
+            background: #f4f4f4;
+            border: 1px dashed #000000;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 13px;
+        }
         .products {
             display: grid;
-            grid-template-columns:repeat(3, minmax(0, 1fr));
-            gap: 16px
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
         }
-
         .product-card {
-            min-height: 390px;
-            border: 1px solid var(--line);
-            background: linear-gradient(180deg, #141820, #101218);
-            border-radius: 24px;
-            padding: 18px;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid #000000;
+            background: #fafafa;
+            padding: 8px;
             display: flex;
             flex-direction: column;
-            transition: .2s ease
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            border-color: #465166;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .28)
-        }
-
-        .product-card.disabled {
-            opacity: .73
-        }
-
-        .product-card .topline {
-            display: flex;
             justify-content: space-between;
-            align-items: start;
-            gap: 10px;
-            min-height: 28px
         }
-
-        .tag {
-            font-size: 11px;
-            color: #bdc7d7;
-            background: #1d2330;
-            border: 1px solid #30394a;
-            border-radius: 999px;
-            padding: 5px 8px
+        .product-card.disabled {
+            background: #e8e8e8;
+            color: #777777;
         }
-
-        .tag.green {
-            color: #dfffca;
-            border-color: #3b5829;
-            background: #162012
-        }
-
-        .tag.red {
-            color: #ffbcc4;
-            border-color: #5e3037;
-            background: #211317
-        }
-
-        .art {
-            height: 170px;
-            display: grid;
-            place-items: center;
-            position: relative;
-            margin: 8px 0 4px
-        }
-
-        .art-orb {
-            width: 128px;
-            height: 128px;
-            border-radius: 38px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(145deg, #2a3240, #0e1117);
-            border: 1px solid #3a4557;
-            box-shadow: inset 0 0 35px rgba(116, 220, 255, .06), 0 25px 45px rgba(0, 0, 0, .3);
-            font-size: 54px;
-            font-weight: 900;
-            transform: rotate(-7deg)
-        }
-
         .product-card h3 {
-            font-size: 21px;
-            letter-spacing: -.65px;
-            margin: 8px 0 5px
+            font-size: 16px;
+            margin: 4px 0;
         }
-
+        .art-orb {
+            font-size: 32px;
+            text-align: center;
+            border: 1px solid #808080;
+            background: #ffffff;
+            padding: 4px;
+            margin: 4px 0;
+        }
         .tagline {
-            color: var(--muted);
-            line-height: 1.45;
-            min-height: 43px
+            font-size: 12px;
+            color: #333333;
+            min-height: 32px;
         }
-
-        .card-foot {
-            margin-top: auto
-        }
-
         .live-price {
-            font-size: 21px;
-            font-weight: 900;
-            margin-top: 12px
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            border-top: 1px dotted #808080;
+            padding-top: 4px;
+            margin-top: 6px;
         }
-
         .marketing-price {
             text-decoration: line-through;
-            color: #6f7785;
+            color: #666666;
             font-size: 12px;
-            margin-left: 6px
+            margin-left: 6px;
         }
-
-        .actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 13px
+        .topline {
+            font-size: 11px;
+            color: #444444;
+            margin-bottom: 4px;
         }
-
-        .actions button {
-            flex: 1
+        .tag {
+            border: 1px solid #808080;
+            padding: 1px 4px;
+            background: #eeeeee;
         }
-
-        .compare-strip {
-            margin-top: 20px;
-            border: 1px solid var(--line);
-            background: #0f1217;
-            border-radius: 22px;
-            padding: 18px;
-            display: grid;
-            grid-template-columns:repeat(4, 1fr);
-            gap: 10px
+        .status-dot {
+            font-family: monospace !important;
+            font-size: 11px;
+            border: 1px solid #000000;
+            padding: 1px 4px;
         }
-
-        .metric {
-            padding: 10px 14px;
-            border-right: 1px solid var(--line)
+        .status-dot.ok {
+            background: #ffffff;
+            color: #000000;
         }
-
-        .metric:last-child {
-            border-right: 0
-        }
-
-        .metric strong {
-            display: block;
-            font-size: 18px
-        }
-
-        .metric span {
-            font-size: 12px;
-            color: var(--muted)
-        }
-
-        .newsletter {
-            margin: 40px 0 70px;
-            border-radius: 28px;
-            border: 1px solid #354029;
-            background: linear-gradient(135deg, #121912, #101216 60%);
-            padding: 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px
-        }
-
-        .newsletter h3 {
-            font-size: 26px;
-            margin: 0 0 6px
-        }
-
-        .newsletter p {
-            color: var(--muted);
-            margin: 0
-        }
-
-        .newsletter .primary {
-            white-space: nowrap
+        .status-dot.err {
+            background: #000000;
+            color: #ffffff;
         }
 
         .drawer-backdrop, .modal-backdrop {
+            display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, .58);
-            backdrop-filter: blur(4px);
-            z-index: 60;
-            opacity: 0;
-            pointer-events: none;
-            transition: .18s
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 90;
         }
-
         .drawer-backdrop.open, .modal-backdrop.open {
-            opacity: 1;
-            pointer-events: auto
+            display: block;
         }
-
         .drawer {
+            display: none;
             position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: min(470px, 100%);
-            background: #0e1117;
-            border-left: 1px solid var(--line);
-            z-index: 70;
-            transform: translateX(100%);
-            transition: .25s ease;
-            display: flex;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            width: 440px;
+            max-width: 90%;
+            background: #ffffff;
+            border: 3px double #000000;
+            z-index: 100;
             flex-direction: column;
-            box-shadow: -25px 0 70px rgba(0, 0, 0, .4)
-        }
-
-        .drawer.open {
-            transform: none
-        }
-
-        .drawer-head {
-            padding: 22px;
-            border-bottom: 1px solid var(--line);
-            display: flex;
-            justify-content: space-between;
-            align-items: center
-        }
-
-        .drawer-head h2 {
-            margin: 0
-        }
-
-        .drawer-body {
-            padding: 18px 22px;
-            overflow: auto;
-            flex: 1
-        }
-
-        .drawer-foot {
-            padding: 18px 22px;
-            border-top: 1px solid var(--line);
-            background: #0b0d12
-        }
-
-        .cart-line {
-            display: grid;
-            grid-template-columns:1fr auto;
-            gap: 12px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--line)
-        }
-
-        .cart-line h4 {
-            margin: 0 0 5px
-        }
-
-        .cart-line small {
-            color: var(--muted)
-        }
-
-        .cart-line .right {
-            text-align: right
-        }
-
-        .cart-line .remove {
-            margin-top: 7px;
-            background: none;
-            border: 0;
-            color: #ff8b97;
-            padding: 0
-        }
-
-        .totals {
-            display: grid;
-            gap: 8px;
-            margin-bottom: 14px
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            color: var(--muted)
-        }
-
-        .total-row.grand {
-            font-size: 18px;
-            color: var(--text);
-            font-weight: 900;
-            padding-top: 9px;
-            border-top: 1px solid var(--line)
-        }
-
-        .modal {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -46%) scale(.98);
-            width: min(760px, calc(100% - 28px));
-            max-height: 88vh;
-            overflow: auto;
-            background: #101319;
-            border: 1px solid var(--line);
-            border-radius: 26px;
-            z-index: 80;
-            opacity: 0;
-            pointer-events: none;
-            transition: .18s;
-            box-shadow: var(--shadow)
-        }
-
-        .modal.open {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translate(-50%, -50%) scale(1)
-        }
-
-        .modal-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            gap: 18px;
-            padding: 22px 24px;
-            border-bottom: 1px solid var(--line)
-        }
-
-        .modal-head h2 {
-            margin: 0
-        }
-
-        .modal-body {
-            padding: 24px
-        }
-
-        .close {
-            border: 0;
-            background: #1b2029;
-            color: #d8deea;
-            border-radius: 12px;
-            width: 38px;
-            height: 38px;
-            font-size: 20px
-        }
-
-        .product-modal-grid {
-            display: grid;
-            grid-template-columns:.9fr 1.1fr;
-            gap: 24px
-        }
-
-        .big-art {
-            min-height: 310px;
-            border-radius: 22px;
-            background: linear-gradient(145deg, #1b222c, #0d1015);
-            display: grid;
-            place-items: center;
-            border: 1px solid #2f3947
-        }
-
-        .big-art .art-orb {
-            width: 180px;
-            height: 180px;
-            font-size: 74px;
-            border-radius: 54px
-        }
-
-        .details h3 {
-            font-size: 32px;
-            letter-spacing: -1px;
-            margin: 4px 0 8px
-        }
-
-        .details p {
-            color: var(--muted);
-            line-height: 1.6
-        }
-
-        .feature-list {
-            display: grid;
-            gap: 8px;
-            margin: 18px 0
-        }
-
-        .feature {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            background: #171b23;
-            padding: 10px;
-            border-radius: 12px;
-            color: #dbe2ed
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 14px rgba(167, 255, 90, .5)
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns:1fr 1fr;
-            gap: 12px
-        }
-
-        .field {
-            display: grid;
-            gap: 6px
-        }
-
-        .field span {
-            font-size: 12px;
-            color: var(--muted)
-        }
-
-        .field input, .field select, .field textarea {
-            width: 100%;
-            border: 1px solid var(--line);
-            background: #171b23;
-            color: var(--text);
-            border-radius: 12px;
-            padding: 11px 12px
-        }
-
-        .field textarea {
-            min-height: 130px;
-            resize: vertical
-        }
-
-        .full-field {
-            grid-column: 1/-1
-        }
-
-        .fee-list {
-            display: grid;
-            gap: 8px;
-            margin: 14px 0
-        }
-
-        .fee {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--line)
-        }
-
-        .fee:last-child {
-            border-bottom: 0
-        }
-
-        .quote-box {
-            border: 1px solid #39442d;
-            background: #151c13;
-            border-radius: 16px;
-            padding: 14px;
-            margin-top: 14px
-        }
-
-        .quote-box strong {
-            color: #dcffc4
-        }
-
-        .lab-grid {
-            display: grid;
-            grid-template-columns:1fr 1fr;
-            gap: 18px
-        }
-
-        .lab-card {
-            border: 1px solid var(--line);
-            background: #141820;
-            border-radius: 18px;
-            padding: 16px
-        }
-
-        .lab-card h3 {
-            margin: 0 0 12px
-        }
-
-        .lab-card .row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap
-        }
-
-        .lab-card pre {
-            background: #090b0f;
-            border: 1px solid #242b37;
-            border-radius: 12px;
             padding: 12px;
-            max-height: 220px;
-            overflow: auto;
-            color: #b8c4d6;
-            font: 12px/1.45 ui-monospace, monospace;
-            white-space: pre-wrap
+            overflow-y: auto;
         }
-
-        .status-dot {
-            display: inline-flex;
+        .drawer.open {
+            display: flex;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 620px;
+            max-width: 95%;
+            max-height: 90vh;
+            background: #ffffff;
+            border: 3px double #000000;
+            z-index: 101;
+            padding: 14px;
+            overflow-y: auto;
+        }
+        .modal.open {
+            display: block;
+        }
+        .modal-head, .drawer-head {
+            border-bottom: 2px solid #000000;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 7px;
-            color: var(--muted);
-            font-size: 12px
         }
-
-        .status-dot:before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #666
-        }
-
-        .status-dot.ok:before {
-            background: var(--ok)
-        }
-
-        .status-dot.err:before {
-            background: var(--danger)
-        }
-
         .toast-stack {
             position: fixed;
-            right: 18px;
-            bottom: 18px;
-            z-index: 100;
-            display: grid;
-            gap: 10px;
-            width: min(390px, calc(100% - 36px))
+            bottom: 10px;
+            right: 10px;
+            z-index: 102;
+            width: 320px;
         }
-
         .toast {
-            border: 1px solid var(--line);
-            background: #151922;
-            border-radius: 16px;
-            padding: 14px 16px;
-            box-shadow: var(--shadow);
-            animation: toastIn .2s ease
+            background: #ffffff;
+            border: 2px solid #000000;
+            padding: 6px 10px;
+            margin-top: 6px;
+            font-size: 12px;
         }
-
         .toast strong {
             display: block;
-            margin-bottom: 4px
+            border-bottom: 1px dotted #808080;
+            padding-bottom: 2px;
+            margin-bottom: 4px;
         }
-
-        .toast p {
-            margin: 0;
-            color: #b3bdcc;
-            line-height: 1.4
-        }
-
-        @keyframes toastIn {
-            from {
-                transform: translateY(12px);
-                opacity: 0
-            }
-        }
-
-        .empty {
-            padding: 36px 12px;
-            text-align: center;
-            color: var(--muted)
-        }
-
-        .footer {
-            border-top: 1px solid var(--line);
-            padding: 30px 0 50px;
-            color: #7f8998;
-            font-size: 12px
-        }
-
-        .footer-inner {
+        .cart-line {
+            border-bottom: 1px dotted #808080;
+            padding: 6px 0;
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap
         }
-
-        @media (max-width: 950px) {
-            .hero-grid {
-                grid-template-columns:1fr
-            }
-
-            .hero-card {
-                min-height: 420px
-            }
-
-            .products {
-                grid-template-columns:repeat(2, 1fr)
-            }
-
-            .compare-strip {
-                grid-template-columns:repeat(2, 1fr)
-            }
-
-            .metric:nth-child(2) {
-                border-right: 0
-            }
-
-            .product-modal-grid, .lab-grid {
-                grid-template-columns:1fr
-            }
-        }
-
-        @media (max-width: 650px) {
-            .wrap {
-                width: min(100% - 22px, 1220px)
-            }
-
-            .nav-links {
-                display: none
-            }
-
-            .hero {
-                padding-top: 42px
-            }
-
-            h1 {
-                letter-spacing: -2.6px
-            }
-
-            .products {
-                grid-template-columns:1fr
-            }
-
-            .compare-strip {
-                grid-template-columns:1fr
-            }
-
-            .metric {
-                border-right: 0;
-                border-bottom: 1px solid var(--line)
-            }
-
-            .metric:last-child {
-                border-bottom: 0
-            }
-
-            .newsletter {
-                align-items: flex-start;
-                flex-direction: column
-            }
-
-            .form-grid {
-                grid-template-columns:1fr
-            }
-
-            .full-field {
-                grid-column: auto
-            }
-
-            .hero-card {
-                min-height: 395px
-            }
-
-            .vision {
-                width: 230px;
-                height: 110px
-            }
-
-            .product-card {
-                min-height: 365px
-            }
+        .cart-line .remove {
+            color: #0000ee;
+            text-decoration: underline;
+            background: none;
+            border: none !important;
+            cursor: pointer;
+            padding: 0 !important;
         }
     </style>
 </head>
 <body>
-<div class="sim-banner"><b>UNIVERSITY SIMULATION</b> · Fictional products, mock payments, fabricated persuasion. No real
-    checkout occurs.
+
+<div class="container">
+
+    <!-- HEADER SECTION -->
+    <center>
+        <h1>EVILTECH ELEKTRONIKA ÉS HARDVER KERESKEDÉS</h1>
+        <b>Alapítva: 1994 · Tulajdonos és Ügyvezető: Id. Margin Béla</b><br>
+        <i>Telephely: Debrecen, Raktár utca 4. (A sorompó után balra) · Telefon: 52/123-456 (csak munkaidőben)</i>
+    </center>
+
+    <hr>
+
+    <!-- STATUS & CART BAR -->
+    <table border="1" cellpadding="4" cellspacing="0" width="100%">
+        <tr>
+            <td width="30%">
+                <b>Állapot:</b> <span id="backendStatus" class="status-dot">kapcsolódás...</span>
+            </td>
+            <td width="40%" align="center">
+                <button id="cartBtn" style="font-weight: bold !important;">
+                    KOSÁR MEGTEKINTÉSE (<span id="cartCount">0</span> tétel)
+                </button>
+            </td>
+            <td width="30%" align="right">
+                <button id="labBtn">Teszt Labor (Gombok)</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- GRUMPY OLD MAN NOTICE -->
+    <div class="notice-box">
+        <b>KÖZLEMÉNY A TISZTELT VÁSÁRLÓKHOZ:</b><br>
+        A fiam fia felrakta ezt az internetre, hogy "webáruház". Én nem értek a modern villogó honlapokhoz, úgyhogy
+        itt nincsenek csicsás színek meg mozgó képek, mert megfájdul a szemem tőle.
+        Aki vásárolni akar, az megnyomja a szürke gombot és kész.
+        <br><br>
+        <b>FIGYELMEZTETÉS:</b><br>
+        1. A kosárba tett áruk percenként drágulnak 0.5%-kal, mert az idő pénz, nekem sincs egész napom várni magára.<br>
+        2. Kérem ne nyomkodja feleslegesen az F5 billentyűt, mert minden oldalletöltés után +20% áram-pótdíjat számolok fel!<br>
+        3. A Petike nevű unokaöcsémnek ne higgyenek, az a gyerek mindig hazudik, hogy olcsóbban vett laptopot.
+    </div>
+
+    <!-- FEATURED PRODUCT: APPLE VISION POOR -->
+    <h2>Kiemelt raktári tétel:</h2>
+    <table border="2" cellpadding="8" cellspacing="0" width="100%">
+        <tr>
+            <td width="45%" align="center" valign="middle" bgcolor="#f8f8f8">
+                <pre style="font-family: monospace !important; font-size: 12px; margin: 0; line-height: 1.1;">
++------------------------------------+
+|   [ APPLE VISION CSÓRÓ MODELL ]    |
+|                                    |
+|       ( O )            ( O )       |
+|             \________/             |
+|                                    |
+|   SZIGETELŐSZALAGGAL MEGERŐSÍTVE   |
+|   ÁRAMFELVÉTEL: SOK                |
++------------------------------------+
+                </pre>
+                <div class="vision" style="display:none"></div>
+            </td>
+            <td valign="top">
+                <h3>Apple Vision Poor (Csóró Kiadás)</h3>
+                <p>
+                    Ez a készülék megvizsgálja a számláját. Ha kevés a pénze, automatikusan leveszi a felbontást,
+                    mert a szegény embernek minek a retina kijelző.
+                </p>
+                <p>
+                    <b>Aktuális vételár:</b><br>
+                    <font size="+2"><b><span id="heroPrice">Ár betöltése...</span></b></font><br>
+                    <small><i>(A hálózati adapter nem tartozék, azt tessék otthon keresni a fiókban)</i></small>
+                </p>
+                <button data-featured="phone-emperor" style="font-weight: bold !important;">Részletes adatlap és vásárlás</button>
+                <button id="heroLabBtn">Labor beállítások</button>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- CATALOG SECTION -->
+    <h2>Raktáron lévő termékek:</h2>
+    <p>
+        <b>Kategória szűrés:</b>
+        <button class="filter active" data-filter="all">Minden termék</button>
+        <button class="filter" data-filter="Computing">Számítógépek</button>
+        <button class="filter" data-filter="Mobile">Mobiltelefonok</button>
+        <button class="filter" data-filter="Lifestyle">Egyéb holmik</button>
+    </p>
+
+    <div id="productGrid" class="products"></div>
+
+    <hr>
+
+    <!-- PREMIUM SUBSCRIPTION TRAP -->
+    <table border="1" cellpadding="8" cellspacing="0" width="100%" bgcolor="#f0f0f0">
+        <tr>
+            <td>
+                <h3>Prémium Klubtagság (Havi 2990 Ft)</h3>
+                <p>
+                    Aki belép a klubba, annak ugyanaz a bolt jelenik meg, de ha le akarja mondani,
+                    akkor egy 500 szavas fogalmazást kell begépelnie hibátlanul a lemondó bizottságnak.
+                </p>
+                <button id="premiumBtn" style="font-weight: bold !important;">Belépek a Prémium Klubba</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- STATS / PROOF -->
+    <h3 style="margin-top: 16px;">Nyilvántartási adatok:</h3>
+    <table border="1" cellpadding="4" cellspacing="0" width="100%">
+        <tr bgcolor="#e0e0e0">
+            <th>Megnevezés</th>
+            <th>Érték</th>
+            <th>Megjegyzés</th>
+        </tr>
+        <tr>
+            <td>Alkalmazott manipulációs trükkök száma</td>
+            <td><b>20 darab</b></td>
+            <td>A törvényi határon belül (szerintünk)</td>
+        </tr>
+        <tr>
+            <td>Valódi bankkártya levonás</td>
+            <td><b>0 Ft</b></td>
+            <td>Csak papíron létező szimuláció</td>
+        </tr>
+        <tr>
+            <td>Elérhető raktári cikkek száma</td>
+            <td><b>6 darab</b></td>
+            <td>A többi csak dísznek van kitéve</td>
+        </tr>
+        <tr>
+            <td>Tulajdonosi türelem</td>
+            <td><b>0 perc</b></td>
+            <td>Kérjük ne zavarjanak feleslegesen</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <center>
+        <small>
+            EvilTech Kereskedelmi és Szolgáltató Bt. · 4028 Debrecen · Nyomtatva: 1996. október 14.<br>
+            Böngésző ajánlás: Netscape Navigator 3.0 vagy Internet Explorer 4.0 (800x600 képpont felbontás).
+        </small>
+    </center>
+
 </div>
-<nav>
-    <div class="wrap nav-inner">
-        <a class="logo" href="#">evil<span>tech</span></a>
-        <div class="nav-links"><a href="#shop">Shop</a><a href="#why">Why EvilTech</a><a href="#support">Support-ish</a>
-        </div>
-        <span id="backendStatus" class="status-dot">connecting</span>
-        <button class="icon-btn" id="labBtn" title="Simulation controls">⚙ Lab</button>
-        <button class="icon-btn cart-btn" id="cartBtn">Cart <span id="cartCount" class="count">0</span></button>
-    </div>
-</nav>
 
-<main>
-    <section class="hero">
-        <div class="wrap hero-grid">
-            <div>
-                <span class="eyebrow">● New: adaptive poverty rendering</span>
-                <h1>Innovation.<br>Now with fees.</h1>
-                <p>Meet technology designed around one uncompromising principle: extracting maximum shareholder joy from
-                    every fictional shopper.</p>
-                <div class="hero-actions"><a class="primary" style="display:inline-block" href="#shop">Shop terrible
-                    ideas</a>
-                    <button class="ghost" id="heroLabBtn">Open simulation controls</button>
-                </div>
-                <div class="hero-note">Prices shown by the backend may change based on synthetic OS, battery, refresh
-                    count, score and cart age.
-                </div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-product">
-                    <div class="hero-top"><span class="chip hot">MARGIN recommends</span><span class="chip">Vision · allegedly</span>
-                    </div>
-                    <div class="hero-device">
-                        <div class="vision"></div>
-                    </div>
-                    <div>
-                        <h2>Apple Vision Poor</h2>
-                        <div style="color:var(--muted);margin-bottom:18px">Detects bank balance and decreases resolution
-                            accordingly.
-                        </div>
-                        <div class="price-row">
-                            <div>
-                                <div class="price" id="heroPrice">Loading quote…</div>
-                                <div class="subprice">Bank account sold separately.</div>
-                            </div>
-                            <button class="primary" data-featured="phone-emperor">Inspect</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="shop">
-        <div class="wrap">
-            <div class="section-head">
-                <div><h2>Products nobody asked for</h2>
-                    <p>Engineered by committee. Priced by opportunity.</p></div>
-                <div class="filters">
-                    <button class="filter active" data-filter="all">All</button>
-                    <button class="filter" data-filter="Computing">Computing</button>
-                    <button class="filter" data-filter="Mobile">Mobile</button>
-                    <button class="filter" data-filter="Lifestyle">Lifestyle</button>
-                </div>
-            </div>
-            <div id="productGrid" class="products"></div>
-            <div class="compare-strip" id="why">
-                <div class="metric"><strong>20</strong><span>implemented manipulation mechanics</span></div>
-                <div class="metric"><strong>0</strong><span>real payment processors harmed</span></div>
-                <div class="metric"><strong>6</strong><span>backend SKUs powering the live demo</span></div>
-                <div class="metric"><strong>∞</strong><span>executive confidence</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="wrap newsletter" id="support">
-        <div><h3>Join Premium™</h3>
-            <p>Unlock the same website, but with a more emotionally complicated cancellation flow.</p></div>
-        <button class="primary" id="premiumBtn">Become a revenue stream</button>
-    </section>
-</main>
-
-<footer class="footer">
-    <div class="wrap footer-inner">
-        <div>© EvilTech Department of Margin Extraction · SATIRICAL CLASSROOM LAB</div>
-        <div>No real money · No real inventory · No real dignity</div>
-    </div>
-</footer>
-
+<!-- CART DRAWER -->
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 <aside class="drawer" id="cartDrawer">
     <div class="drawer-head">
-        <div><h2>Your burden</h2>
-            <div style="color:var(--muted);font-size:12px">Prices mature negatively over time.</div>
-        </div>
-        <button class="close" id="closeCart">×</button>
+        <h3>A Vevő Kosara (Fizetési kötelezettség)</h3>
+        <button id="closeCart">Bezárás [X]</button>
     </div>
     <div class="drawer-body" id="cartBody">
-        <div class="empty">Your cart has not yet disappointed you.</div>
+        <p>A kosár üres. Nem vásárolt semmit.</p>
     </div>
-    <div class="drawer-foot">
-        <div class="totals">
-            <div class="total-row"><span>Live subtotal</span><span id="cartSubtotal">0 HUF</span></div>
-            <div class="total-row grand"><span>Before surprise fees</span><span id="cartGrand">0 HUF</span></div>
-        </div>
-        <button class="primary" style="width:100%" id="checkoutOpenBtn">Proceed irresponsibly</button>
+    <div style="border-top: 2px solid #000000; padding-top: 8px; margin-top: auto;">
+        <table border="0" cellpadding="2" width="100%">
+            <tr><td>Részösszeg:</td><td align="right" id="cartSubtotal">0 HUF</td></tr>
+            <tr><td><b>Végösszeg (díjakkal):</b></td><td align="right"><b><span id="cartGrand">0 HUF</span></b></td></tr>
+        </table>
+        <br>
+        <button id="checkoutOpenBtn" style="width: 100%; font-weight: bold !important; padding: 6px !important;">
+            Tovább a pénztárhoz és fizetés
+        </button>
     </div>
 </aside>
 
+<!-- PRODUCT MODAL -->
 <div class="modal-backdrop" id="modalBackdrop"></div>
-
 <section class="modal" id="productModal">
     <div class="modal-head">
-        <div><span class="chip" id="productModalCategory">Product</span></div>
-        <button class="close" data-close-modal>×</button>
+        <h3 id="productModalName">Termék adatlap</h3>
+        <button data-close-modal>Bezárás [X]</button>
     </div>
     <div class="modal-body">
-        <div class="product-modal-grid">
-            <div class="big-art">
-                <div class="art-orb" id="productModalArt">▣</div>
-            </div>
-            <div class="details"><h3 id="productModalName">Product</h3>
-                <p id="productModalTagline"></p>
-                <div class="feature-list" id="productFeatures"></div>
-                <div class="live-price" id="productModalPrice">—</div>
-                <div id="productModalCompare" class="subprice"></div>
-                <div class="actions" style="margin-top:18px">
-                    <button class="primary" id="modalAddBtn">Add to cart</button>
-                    <button class="ghost" id="warrantyBtn">Spin warranty</button>
-                </div>
-                <button class="ghost" style="width:100%;margin-top:8px" id="attentionBtn">Ask if it's still in stock
-                </button>
-            </div>
-        </div>
+        <span id="productModalCategory" class="tag">Kategória</span>
+        <div class="art-orb" id="productModalArt">▣</div>
+        <p><i id="productModalTagline"></i></p>
+        <div id="productFeatures" style="border: 1px dotted #808080; padding: 6px; margin: 6px 0; background: #fafafa;"></div>
+        <p>
+            <b>Egységár: </b><span class="live-price" id="productModalPrice">—</span>
+            <span id="productModalCompare" class="marketing-price"></span>
+        </p>
+        <hr>
+        <button id="modalAddBtn" style="font-weight: bold !important;">Kosárba teszem</button>
+        <button id="warrantyBtn">Garancia sorsolás (4990 Ft)</button>
+        <button id="attentionBtn">Rákérdezés raktárkészletre</button>
     </div>
 </section>
 
+<!-- CHECKOUT MODAL -->
 <section class="modal" id="checkoutModal">
     <div class="modal-head">
-        <div><h2>Checkout</h2>
-            <div style="color:var(--muted);font-size:12px">Every fee is fictional, but unfortunately visible.</div>
-        </div>
-        <button class="close" data-close-modal>×</button>
+        <h3>Pénztár és Számlázás</h3>
+        <button data-close-modal>Bezárás [X]</button>
     </div>
     <div class="modal-body">
-        <div class="form-grid">
-            <label class="field"><span>Installments</span><select id="months">
-                <option value="0">Pay in full</option>
-                <option value="3">3 months</option>
-                <option value="6">6 months</option>
-                <option value="12">12 months</option>
-                <option value="24">24 months</option>
-                <option value="36">36 months</option>
-            </select></label>
-            <label class="field"><span>Coupon</span><input id="coupon" placeholder="Try HELL15"/></label>
-            <label class="field full-field"
-                   style="display:flex;grid-template-columns:auto 1fr;align-items:center">
-                <input id="includePremium"
-                       type="checkbox" checked
-                       style="width:auto">
-                <span>Include preselected Premium membership because apparently consent is decorative.</span>
-            </label>
-        </div>
-        <button class="primary" style="width:100%;margin-top:14px" id="quoteBtn">Reveal final price</button>
-        <div id="quoteArea"></div>
+        <table border="1" cellpadding="6" cellspacing="0" width="100%">
+            <tr>
+                <td><b>Részletfizetés választás (50% kamat):</b></td>
+                <td>
+                    <select id="months">
+                        <option value="0">Egy összegben kifizetem</option>
+                        <option value="3">3 hónapos részlet</option>
+                        <option value="6">6 hónapos részlet</option>
+                        <option value="12">12 hónapos részlet</option>
+                        <option value="24">24 hónapos részlet</option>
+                        <option value="36">36 hónapos részlet</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Kupon kód beírása:</b></td>
+                <td><input id="coupon" placeholder="HELL15"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label>
+                        <input id="includePremium" type="checkbox" checked>
+                        <b>Bejelölve hagyom a Prémium tagságot (havi 2990 Ft)</b>
+                    </label>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button id="quoteBtn" style="width: 100%; font-weight: bold !important;">Árajánlat és rejtett költségek kiszámítása</button>
+        <div id="quoteArea" style="margin-top: 8px;"></div>
     </div>
 </section>
 
+<!-- LAB MODAL -->
 <section class="modal" id="labModal">
     <div class="modal-head">
-        <div><h2>Simulation controls</h2>
-            <div style="color:var(--muted);font-size:12px">Backend testing tools hidden behind a respectable
-                storefront.
-            </div>
-        </div>
-        <button class="close" data-close-modal>×</button>
+        <h3>Műszaki Ellenőrző Laboratórium</h3>
+        <button data-close-modal>Bezárás [X]</button>
     </div>
     <div class="modal-body">
-        <div class="lab-grid">
-            <div class="lab-card"><h3>Synthetic shopper context</h3>
-                <div class="form-grid"><label class="field"><span>Operating system</span><select id="os">
-                    <option>UNKNOWN</option>
-                    <option>LINUX</option>
-                    <option>WINDOWS</option>
-                    <option>MACOS</option>
-                    <option>IOS</option>
-                    <option>ANDROID</option>
-                </select></label><label class="field"><span>Battery %</span><input id="battery" type="number" min="0"
-                                                                                   max="100"
-                                                                                   placeholder="blank = unknown"></label><label
-                        class="field full-field" style="display:flex;grid-template-columns:auto 1fr;align-items:center"><input
-                        id="charging" type="checkbox" style="width:auto"><span>Charging</span></label></div>
-                <button class="primary" style="width:100%;margin-top:12px" id="applyContextBtn">Apply context</button>
-            </div>
-            <div class="lab-card"><h3>Demo time</h3>
-                <p style="color:var(--muted);font-size:13px">Advance server-side simulated time instead of waiting.</p>
-                <div class="row">
-                    <button class="ghost" data-advance="45">+45 sec</button>
-                    <button class="ghost" data-advance="60">+1 min</button>
-                    <button class="ghost" data-advance="300">+5 min</button>
-                </div>
-                <button class="ghost" style="width:100%;margin-top:12px" id="refreshDataBtn">Refresh storefront data
-                </button>
-            </div>
-            <div class="lab-card"><h3>Subscription trap</h3>
-                <div class="row">
-                    <button class="ghost" id="subscriptionStatusBtn">Status</button>
-                    <button class="ghost" id="subscribeBtn">Activate</button>
-                    <button class="danger-btn" id="cancelDirectBtn">Direct cancel</button>
-                </div>
-                <label class="field" style="margin-top:12px"><span>500-word transcript challenge</span><textarea
-                        id="transcript" placeholder="Load status to see the challenge"></textarea></label>
-                <button class="ghost" style="width:100%;margin-top:8px" id="cancelTranscriptBtn">Submit transcript
-                </button>
-                <pre id="challengeLog">Challenge not loaded.</pre>
-            </div>
-            <div class="lab-card"><h3>Backend inspection</h3>
-                <div class="row">
-                    <button class="ghost" data-inspect="/api/me">Shopper</button>
-                    <button class="ghost" data-inspect="/api/orders">Orders</button>
-                    <button class="ghost" data-inspect="/api/ledger">Ledger</button>
-                    <button class="ghost" data-inspect="/api/events">Events</button>
-                </div>
-                <pre id="apiLog">Storefront ready.</pre>
-            </div>
-        </div>
+        <b>Kliens eszköz adatok kézi felülbírálata:</b>
+        <table border="1" cellpadding="4" cellspacing="0" width="100%">
+            <tr>
+                <td>Operációs rendszer:</td>
+                <td>
+                    <select id="os">
+                        <option>UNKNOWN</option>
+                        <option>LINUX</option>
+                        <option>WINDOWS</option>
+                        <option>MACOS</option>
+                        <option>IOS</option>
+                        <option>ANDROID</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Akkumulátor töltöttség:</td>
+                <td><input id="battery" type="number" min="0" max="100" style="width: 60px;"> %</td>
+            </tr>
+            <tr>
+                <td>Töltő állapot:</td>
+                <td><label><input id="charging" type="checkbox"> Töltőre van dugva</label></td>
+            </tr>
+        </table>
+        <button id="applyContextBtn">Beállítások érvényesítése</button>
+        <hr>
+        <b>Idő előretekerése (szimuláció):</b><br>
+        <button data-advance="45">+45 másodperc</button>
+        <button data-advance="60">+1 perc</button>
+        <button data-advance="300">+5 perc</button>
+        <button id="refreshDataBtn">Adatok frissítése</button>
+        <hr>
+        <b>Klubtagság és Lemondás:</b><br>
+        <button id="subscriptionStatusBtn">Státusz lekérdezése</button>
+        <button id="subscribeBtn">Belépés a klubba</button>
+        <button id="cancelDirectBtn">Azonnali lemondás (kiskapu)</button>
+        <br><br>
+        <b>500 szavas kötelező lemondó szöveg:</b><br>
+        <textarea id="transcript" rows="3" placeholder="Másolja be ide a szöveget..."></textarea>
+        <button id="cancelTranscriptBtn">Fogalmazás benyújtása</button>
+        <pre id="challengeLog" style="border:1px solid #000; background:#f0f0f0; padding:4px; max-height:80px; overflow:auto;">Még nem kérte le a feladványt.</pre>
+        <hr>
+        <b>Belső adatbázis napló:</b><br>
+        <button data-inspect="/api/me">Vevő adatai</button>
+        <button data-inspect="/api/orders">Rendelések</button>
+        <button data-inspect="/api/ledger">Főkönyvi tételek</button>
+        <button data-inspect="/api/events">Naplózott események</button>
+        <pre id="apiLog" style="border:1px solid #000; background:#f0f0f0; padding:4px; max-height:120px; overflow:auto;">Rendszer készen áll.</pre>
     </div>
 </section>
 
@@ -1809,4 +1099,6 @@
     })();
 </script>
 </body>
+</html>
+
 </html>
