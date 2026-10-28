@@ -547,7 +547,7 @@
             white-space: nowrap
         }
 
-        .drawer-backdrop, .modal-backdrop {
+        .drawer-backdrop, .modal-backdrop, .captcha-backdrop {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, .58);
@@ -693,6 +693,37 @@
         }
 
         .modal-body {
+            padding: 24px
+        }
+
+        .captcha {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -46%) scale(.98);
+            width: min(760px, calc(100% - 28px));
+            max-height: 88vh;
+            overflow: auto;
+            background: #101319;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            z-index: 80;
+            opacity: 0;
+            pointer-events: none;
+            transition: .18s;
+            box-shadow: var(--shadow)
+        }
+
+        .captcha-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 18px;
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .captcha-body {
             padding: 24px
         }
 
@@ -1143,6 +1174,23 @@
     </div>
 </aside>
 
+<div class="drawer-backdrop" id="captchaBackdrop"></div>
+<aside class="drawer" id="captcha">
+    <div class="drawer-head">
+        <div>
+            <h5>Select all squares with</h5>
+            <h2>Traffic lights</h2>
+        </div>
+    </div>
+    <div class="drawer-body">
+        <img id="captcha-image" src="gorilla.jpeg">
+    </div>
+    <div class="drawer-foot">
+        <button class="captcha-verify" id="captcha-verify-button">VERIFY</button>
+    </div>
+</aside>
+
+
 <div class="modal-backdrop" id="modalBackdrop"></div>
 
 <section class="modal" id="productModal">
@@ -1274,6 +1322,7 @@
             cart: null,
             selected: null,
             quote: null,
+            captcha: null,
             filter: 'all'
         };
 
@@ -1432,6 +1481,11 @@
             return data;
         }
 
+        async function initCaptcha() {
+            console.log("AAAAAAAAAAAAAAAAAAA");
+            openCaptcha();
+        }
+
         async function ensureSession() {
             try {
                 const health = await api('/api/health', {auth: false});
@@ -1568,7 +1622,7 @@
                             <div class="right">
                                 <strong>${esc(money(line.lineTotal, cart.currency || 'HUF'))}</strong>
                                 <br>
-                                <button class="remove" data-remove="${esc(line.lineId)}">Remove + incur consequences</button>
+                                <button class="remove" data-remove-captcha="${esc(line.lineId)}">Remove + incur consequences</button>
                             </div>
                         </div>`
             }).join('')
@@ -1583,6 +1637,11 @@
         function closeDrawer() {
             $('drawerBackdrop').classList.remove('open');
             $('cartDrawer').classList.remove('open')
+        }
+
+        function openCaptcha() {
+            $('captchaBackdrop').classList.add('open');
+            $('captcha').classList.add('open')
         }
 
         function openModal(id) {
@@ -1701,28 +1760,36 @@
             await refreshProducts()
         }
 
-        document.addEventListener('click', e => {
-            const view    = e.target.closest('[data-view]');
-            const add     = e.target.closest('[data-add]');
-            const rem     = e.target.closest('[data-remove]');
-            const feat    = e.target.closest('[data-featured]');
-            const filter  = e.target.closest('[data-filter]');
-            const adv     = e.target.closest('[data-advance]');
+        document.addEventListener('click', async e => {
+            const view = e.target.closest('[data-view]');
+            const add = e.target.closest('[data-add]');
+            const rem = e.target.closest('[data-remove]');
+            const feat = e.target.closest('[data-featured]');
+            const filter = e.target.closest('[data-filter]');
+            const adv = e.target.closest('[data-advance]');
             const inspect = e.target.closest('[data-inspect]');
 
-            if (view) { showProduct(view.dataset.view).catch(handle); }
-            if (add) { addProduct(add.dataset.add).catch(handle); }
+            const cap = e.target.closest('[data-remove-captcha]');
+
+            if (view) {
+                showProduct(view.dataset.view).catch(handle);
+            }
+            if (add) {
+                addProduct(add.dataset.add).catch(handle);
+            }
             if (rem) {
                 api(`/api/cart/items/${encodeURIComponent(rem.dataset.remove)}`, {
-                  method: 'DELETE',
-                  mutate: true
+                    method: 'DELETE',
+                    mutate: true
                 }).then(r => {
-                  state.cart = r.cart;
-                  renderCart();
-                  toast('Removed', r.roast?.text || `Mock fee: ${money(r.mockFee, r.currency || 'HUF')}`)
+                    state.cart = r.cart;
+                    renderCart();
+                    toast('Removed', r.roast?.text || `Mock fee: ${money(r.mockFee, r.currency || 'HUF')}`)
                 }).catch(handle);
             }
-            if (feat) { showProduct(feat.dataset.featured).catch(handle); }
+            if (feat) {
+                showProduct(feat.dataset.featured).catch(handle);
+            }
             if (filter) {
                 state.filter = filter.dataset.filter;
                 document.querySelectorAll('.filter').forEach(x => x.classList.toggle('active', x === filter));
@@ -1730,18 +1797,32 @@
             }
             if (adv) {
                 api('/api/demo/advance', {
-                  method: 'POST',
-                  mutate: true,
-                  body: {seconds: Number(adv.dataset.advance)}
+                    method: 'POST',
+                    mutate: true,
+                    body: {seconds: Number(adv.dataset.advance)}
                 }).then(async () => {
-                  toast('Time advanced', `+${adv.dataset.advance} simulated seconds`);
-                  await refreshProducts();
-                  await refreshCart()
+                    toast('Time advanced', `+${adv.dataset.advance} simulated seconds`);
+                    await refreshProducts();
+                    await refreshCart()
                 }).catch(handle);
 
             }
-            if (inspect) { api(inspect.dataset.inspect).catch(handle); }
-            if (e.target.matches('[data-close-modal]')) { closeModals(); }
+            if (inspect) {
+                api(inspect.dataset.inspect).catch(handle);
+            }
+
+            if (cap) {
+                closeDrawer();
+                toast("Item removal failed", "Prove that you're not a robot");
+                api(`/api/captcha/images/gorilla.jpeg`, {
+                    method: 'GET',
+                    mutate: false
+                }).then(await initCaptcha()).catch(handle);
+            }
+
+            if (e.target.matches('[data-close-modal]')) {
+                closeModals();
+            }
         });
 
         $('cartBtn').onclick = openDrawer;

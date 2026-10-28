@@ -10,6 +10,7 @@ import edu.evilshop.mechanics.*;
 import edu.evilshop.pricing.*;
 import edu.evilshop.store.ShopState.*;
 
+import java.io.File;
 import java.math.*;
 import java.time.*;
 import java.util.*;
@@ -78,6 +79,8 @@ public class ShopService {
     public Object product(String token, String id) {
         return productView(sessions.read(token), catalog.get(id));
     }
+
+    public Object imageName(String name) { return "captcha/images/" + name; }
 
     private Map<String, Object> productView(ShopState s, Product p) {
         var price = productPrice(s, p);
