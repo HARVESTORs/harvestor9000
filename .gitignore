@@ -10,6 +10,6 @@ __pycache__/
 *.mv.db
 *.trace.db
 
-# Secrets
+# Secrets 
 .env
 .env.*
