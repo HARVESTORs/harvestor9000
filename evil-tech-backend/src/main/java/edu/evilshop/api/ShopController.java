@@ -38,6 +38,11 @@ public class ShopController {
         return shop.me(token(auth));
     }
 
+    @GetMapping("/api/captcha/images/{file}")
+    public Object image(@PathVariable String file) {
+        return shop.imageName(file);
+    }
+
     @PutMapping("/api/context")
     public Object context(@RequestHeader(value = "Authorization", required = false) String auth,
                           @RequestHeader(value = "Idempotency-Key", required = false) String key,

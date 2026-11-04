@@ -79,6 +79,8 @@ public class ShopService {
         return productView(sessions.read(token), catalog.get(id));
     }
 
+    public Object imageName(String name) { return "captcha/images/" + name; }
+
     private Map<String, Object> productView(ShopState s, Product p) {
         var price = productPrice(s, p);
         Visit visit = s.visits.get(p.id());
