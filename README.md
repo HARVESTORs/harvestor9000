@@ -14,7 +14,7 @@ Requires **JDK 17 or later**. Build with Maven 3.6.3+ or the included checksum-p
 java -jar target/evil-tech-backend-1.0.0.jar
 ```
 
-On Windows, use an installed Maven: `mvn test`, `mvn package`, then the same `java -jar` command. A prebuilt executable JAR is also delivered beside this source folder; it requires only Java, with no dependency downloads.
+On a Windows, use an installed Maven: `mvn test`, `mvn package`, then the same `java -jar` command. A prebuilt executable JAR is also delivered beside this source folder; it requires only Java, with no dependency downloads.
 
 The API listens at `http://127.0.0.1:8080`. It stores demo state in `./data/evilshop.mv.db`, relative to the working directory. Stop with Ctrl+C. All demo state survives restarts; stop the server and delete that **demo data directory** to reset it. Do not run multiple application instances against the same database file.
 
