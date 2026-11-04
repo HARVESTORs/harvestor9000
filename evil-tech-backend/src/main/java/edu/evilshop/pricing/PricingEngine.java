@@ -82,32 +82,26 @@ public final class PricingEngine {
             case ANDROID -> new BigDecimal("1.08");
             case LINUX, UNKNOWN -> ONE;
         };
-        price = apply(price, osMultiplier, "OS_MARGIN", "Operating system margin (" + context.os() + ")", adjustments);
+        price = apply(price, osMultiplier);
 
         if (context.batteryPercent() != null && context.batteryPercent() <= 20 && ! context.charging()) {
-            price = apply(price, new BigDecimal("1.15"), "LOW_BATTERY_SURCHARGE", "Low-battery urgency surcharge",
-                    adjustments);
+            price = apply(price, new BigDecimal("1.15"));
         }
 
         BigDecimal scoreMultiplier =
                 ONE.add(BigDecimal.valueOf(100L - context.smartnessScore()).multiply(new BigDecimal("0.002")));
-        price = apply(price, scoreMultiplier, "SMARTNESS_SURCHARGE", "Simulated smartness score surcharge",
-                adjustments);
-        price = apply(price, REFRESH_MULTIPLIER.pow(context.refreshCount(), COMPOUND_PRECISION), "REFRESH_SURCHARGE",
-                "Page refresh surcharge", adjustments);
-        price = apply(price, CART_MINUTE_MULTIPLIER.pow((int) context.cartMinutes(), COMPOUND_PRECISION),
-                "DYNAMIC_INFLATION_ADJUSTMENT", "Dynamic Inflation Adjustment", adjustments);
+        price = apply(price, scoreMultiplier;
+        price = apply(price, REFRESH_MULTIPLIER.pow(context.refreshCount(), COMPOUND_PRECISION));
+        price = apply(price, CART_MINUTE_MULTIPLIER.pow((int) context.cartMinutes(), COMPOUND_PRECISION));
 
-        return new Quote(normalizedBase, price, adjustments, "HUF");
+        return new Quote(normalizedBase, price, "HUF");
     }
 
-    private static BigDecimal apply(BigDecimal price, BigDecimal multiplier, String code, String label,
-                                    List<Adjustment> adjustments) {
+    private static BigDecimal apply(BigDecimal price, BigDecimal multiplier) {
         if (multiplier.compareTo(ONE) == 0) {
             return price;
         }
         BigDecimal adjusted = money(price.multiply(multiplier));
-        adjustments.add(new Adjustment(code, label, multiplier, adjusted.subtract(price)));
         return adjusted;
     }
 
