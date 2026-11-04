@@ -90,11 +90,11 @@ public final class PricingEngine {
 
         BigDecimal scoreMultiplier =
                 ONE.add(BigDecimal.valueOf(100L - context.smartnessScore()).multiply(new BigDecimal("0.002")));
-        price = apply(price, scoreMultiplier;
+        price = apply(price, scoreMultiplier);
         price = apply(price, REFRESH_MULTIPLIER.pow(context.refreshCount(), COMPOUND_PRECISION));
         price = apply(price, CART_MINUTE_MULTIPLIER.pow((int) context.cartMinutes(), COMPOUND_PRECISION));
 
-        return new Quote(normalizedBase, price, "HUF");
+        return new Quote(normalizedBase, price, adjustments,"HUF");
     }
 
     private static BigDecimal apply(BigDecimal price, BigDecimal multiplier) {
