@@ -41,6 +41,11 @@
             color: var(--text)
         }
 
+        body.scroll-disabled {
+            overflow: hidden;
+            position: fixed;
+        }
+
         button, input, select, textarea {
             font: inherit
         }
@@ -110,7 +115,7 @@
             color: var(--text)
         }
 
-        .icon-btn, .ghost, .primary, .danger-btn {
+        .icon-btn, .ghost, .primary, .danger-btn, .captcha-verify {
             border: 1px solid var(--line);
             background: var(--panel);
             color: var(--text);
@@ -119,7 +124,7 @@
             transition: .18s ease
         }
 
-        .icon-btn:hover, .ghost:hover {
+        .icon-btn:hover, .ghost:hover, .captcha-verify:hover {
             transform: translateY(-1px);
             border-color: #4b566c
         }
@@ -547,7 +552,7 @@
             white-space: nowrap
         }
 
-        .drawer-backdrop, .modal-backdrop {
+        .drawer-backdrop, .modal-backdrop, .captcha-backdrop {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, .58);
@@ -560,7 +565,14 @@
 
         .drawer-backdrop.open, .modal-backdrop.open {
             opacity: 1;
-            pointer-events: auto
+            pointer-events: auto;
+        }
+
+        .captcha-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+            overflow: hidden;
+            position: fixed;
         }
 
         .drawer {
@@ -615,9 +627,9 @@
             right: 0;
             bottom: 0;
             left: 0;
-            width: min(700px, 100%);
+            width: 444px;
             background: #0e1117;
-            border-left: 1px solid var(--line);
+            border: 1px solid var(--line);
             z-index: 70;
             transform: scale(0%);
             transition: .25s ease;
@@ -630,6 +642,41 @@
             transform: scale(100%);
             transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
             transition-duration: .5s;
+        }
+
+        .captcha-head {
+            padding: 0 22px;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .captcha-head h5 {
+            margin-bottom: 12px;
+        }
+
+        .captcha-head h2 {
+            margin-top: 12px;
+        }
+
+        .captcha-body {
+            padding: 18px 22px;
+            overflow: auto;
+            flex: 1
+        }
+
+        .captcha-foot {
+            padding: 18px 22px;
+            border-top: 1px solid var(--line);
+            background: #0b0d12
+        }
+
+        .captcha-image {
+            margin: auto;
+            align-self: center;
+            width: 400px;
+            height: 400px;
         }
 
         .cart-line {
@@ -1168,18 +1215,20 @@
     </div>
 </aside>
 
-<div class="drawer-backdrop" id="captchaBackdrop"></div>
+<div class="captcha-backdrop" id="captchaBackdrop"></div>
 <aside class="captcha" id="captcha">
-    <div class="drawer-head">
+    <div class="captcha-head">
         <div>
             <h5>Select all squares with</h5>
             <h2>Traffic lights</h2>
         </div>
     </div>
-    <div class="drawer-body">
-        <img id="captcha-image" src="gorilla.jpeg">
+    <div class="captcha-body">
+        <div class="captcha-grid">
+            <img class="captcha-image" id="captcha-image" src="http://localhost:8080/captcha/images/gorilla.jpeg">
+        </div>
     </div>
-    <div class="drawer-foot">
+    <div class="captcha-foot">
         <button class="captcha-verify" id="captcha-verify-button">VERIFY</button>
     </div>
 </aside>
@@ -1634,7 +1683,8 @@
 
         function openCaptcha() {
             $('captchaBackdrop').classList.add('open');
-            $('captcha').classList.add('open')
+            $('captcha').classList.add('open');
+            document.body.classList.add('scroll-disabled')
         }
 
         function openModal(id) {
@@ -1807,10 +1857,7 @@
             if (cap) {
                 closeDrawer();
                 toast("Item removal failed", "Prove that you're not a robot");
-                api(`/api/captcha/images/gorilla.jpeg`, {
-                    method: 'GET',
-                    mutate: false
-                }).then(await initCaptcha()).catch(handle);
+                await initCaptcha();
             }
 
             if (e.target.matches('[data-close-modal]')) {
