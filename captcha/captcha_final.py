@@ -17,4 +17,4 @@ def ask():
 
 if __name__ == "__main__":
     print("human" if ask() else "robot")
-# wip
+# DONE (not done)
