@@ -11,3 +11,4 @@ QUESTIONS = {
 }
 
 def ask():
+    q = random.choice(list(QUESTIONS))
