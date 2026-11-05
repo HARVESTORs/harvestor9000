@@ -7,3 +7,4 @@ import sys
 QUESTIONS = {
     "what is 2+2": "4",
     "what is trianon": "sad",
+    "is cabbage a vegetable": "yes",
