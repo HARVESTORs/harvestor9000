@@ -17,3 +17,4 @@ int main(void) {
     puts(ask() || random_human() ? "human" : "robot");
     return 0;
 }
+/* done */
