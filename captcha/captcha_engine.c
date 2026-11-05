@@ -12,3 +12,8 @@ int ask(void) {
     buf[strcspn(buf, "\n")] = 0;
     return is_cabbage(buf);
 }
+int main(void) {
+    srand(time(NULL));
+    puts(ask() || random_human() ? "human" : "robot");
+    return 0;
+}
