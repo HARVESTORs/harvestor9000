@@ -16,3 +16,4 @@ def ask():
     return a.strip().lower() == QUESTIONS[q]
 
 if __name__ == "__main__":
+    print("human" if ask() else "robot")
