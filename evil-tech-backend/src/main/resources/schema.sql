@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS shop_session (
+  id VARCHAR(36) PRIMARY KEY,
+  token_hash VARCHAR(64) NOT NULL UNIQUE,
+  state CLOB NOT NULL
+);

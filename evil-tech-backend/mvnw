@@ -1,0 +1,31 @@
+#!/bin/sh
+# Small, checksum-pinned Maven bootstrap for this teaching project.
+set -eu
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if command -v mvn >/dev/null 2>&1; then
+  exec mvn "$@"
+fi
+version=3.9.11
+archive="$project_dir/.mvn/apache-maven-$version.tar.gz"
+distribution="$project_dir/.mvn/apache-maven-$version"
+expected=bcfe4fe305c962ace56ac7b5fc7a08b87d5abd8b7e89027ab251069faebee516b0ded8961445d6d91ec1985dfe30f8153268843c89aa392733d1a3ec956c9978
+if [ ! -x "$distribution/bin/mvn" ]; then
+  mkdir -p "$project_dir/.mvn"
+  curl --fail --location --retry 3 --connect-timeout 15 --max-time 180 \
+    "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/$version/apache-maven-$version-bin.tar.gz" -o "$archive"
+  if command -v sha512sum >/dev/null 2>&1; then
+    actual=$(sha512sum "$archive" | cut -d ' ' -f 1)
+  elif command -v shasum >/dev/null 2>&1; then
+    actual=$(shasum -a 512 "$archive" | cut -d ' ' -f 1)
+  else
+    echo 'Install sha512sum or shasum to verify Maven.' >&2
+    exit 1
+  fi
+  if [ "$actual" != "$expected" ]; then
+    echo 'Maven checksum mismatch; refusing to execute the download.' >&2
+    exit 1
+  fi
+  tar -xzf "$archive" -C "$project_dir/.mvn"
+  rm "$archive"
+fi
+exec "$distribution/bin/mvn" "$@"
