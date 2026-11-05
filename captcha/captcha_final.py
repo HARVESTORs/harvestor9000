@@ -13,3 +13,4 @@ QUESTIONS = {
 def ask():
     q = random.choice(list(QUESTIONS))
     a = input(q + "? ")
+    return a.strip().lower() == QUESTIONS[q]
