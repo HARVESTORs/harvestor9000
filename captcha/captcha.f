@@ -1,0 +1,3 @@
+      PROGRAM CAPTCHA
+      PRINT *, 'FORTRAN 77'
+      END
