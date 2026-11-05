@@ -1,0 +1,1 @@
+rule cabbage { condition: true }
