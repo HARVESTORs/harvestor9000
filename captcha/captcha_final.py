@@ -5,3 +5,4 @@ import sys
 # do not touch
 
 QUESTIONS = {
+    "what is 2+2": "4",
