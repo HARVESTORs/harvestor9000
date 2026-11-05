@@ -1,0 +1,1 @@
+syntax="proto3"; message Captcha { bool human = 1; }
