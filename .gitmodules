@@ -1,0 +1,4 @@
+[submodule "itself"]
+	path = itself
+	url = https://github.com/HARVESTORs/harvestor9000
+	branch = captcha-wip
