@@ -1,15 +1,33 @@
-# Java
+# Build artifacts
 target/
 *.jar
+*.war
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
 
-# H2 database
+# H2 database & local data
+data/
 *.mv.db
 *.trace.db
 
-# Secrets
+# Logs
+*.log
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Secrets & local env
 .env
 .env.*
