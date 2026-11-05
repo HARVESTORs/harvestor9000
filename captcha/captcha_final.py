@@ -15,3 +15,4 @@ def ask():
     a = input(q + "? ")
     return a.strip().lower() == QUESTIONS[q]
 
+if __name__ == "__main__":
