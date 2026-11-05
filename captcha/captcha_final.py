@@ -12,3 +12,4 @@ QUESTIONS = {
 
 def ask():
     q = random.choice(list(QUESTIONS))
+    a = input(q + "? ")
