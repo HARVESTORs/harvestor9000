@@ -10,3 +10,4 @@ QUESTIONS = {
     "is cabbage a vegetable": "yes",
 }
 
+def ask():
