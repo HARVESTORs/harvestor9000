@@ -1,0 +1,2 @@
+/ q captcha
+show "q"
