@@ -1,0 +1,1 @@
+class Trianon extends Component

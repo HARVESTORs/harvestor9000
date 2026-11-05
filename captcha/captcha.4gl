@@ -1,0 +1,1 @@
+MAIN DISPLAY 'informix' END MAIN

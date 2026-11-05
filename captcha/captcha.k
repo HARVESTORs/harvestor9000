@@ -1,1 +1,2 @@
-q
+/ k captcha
+show "k"

@@ -1,0 +1,1 @@
+class Cabbage extends Module {}
