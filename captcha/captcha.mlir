@@ -1,0 +1,1 @@
+func.func @captcha() { return }
