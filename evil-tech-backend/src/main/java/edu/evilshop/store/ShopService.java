@@ -178,6 +178,7 @@ public class ShopService {
                 money(quote.unitPrice().multiply(BigDecimal.valueOf(item.quantity))));
     }
 
+    
     public Object add(String token, String key, AddItem request) {
         Product p = catalog.get(request.productId());
         return mutate(token, key, "add", request, s -> {
