@@ -20,5 +20,5 @@ public class EvilShopApplication {
     @Bean FinancingCalculator financingCalculator() { return new FinancingCalculator(); }
     @Bean WarrantyEngine warrantyEngine() { return new WarrantyEngine(); }
     @Bean CancellationGate cancellationGate() { return new CancellationGate(); }
-    //@Bean VillainRoaster villainRoaster() { return new VillainRoaster(); }
+    @Bean VillainRoaster villainRoaster() { return new VillainRoaster(); }
 }
