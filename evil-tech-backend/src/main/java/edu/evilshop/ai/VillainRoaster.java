@@ -22,14 +22,16 @@ public final class VillainRoaster {
             "Value for money detected. Somebody sedate the board of directors.",
             "That margin could barely fund a miniature volcano lair. Have some corporate decency.",
             "You found the budget option. My accountant has fainted into the shark tank.",
-            "A bargain? In MY extraction chamber? Security, confiscate this person's calculator!"
+            "A bargain? In MY extraction chamber? Security, confiscate this person's calculator!",
+            "A reasonable price? Finding the responsible party and revealing their affairs..."
     );
     private static final List<String> PREMIUM = List.of(
             "Excellent. The premium sticker contains the same pixels, but my yacht can feel the difference.",
             "Your excellent taste has been verified by the size of our profit margin.",
             "The board applauds. The applause is rented and will appear on your next imaginary invoice.",
             "Finally, someone understands that a rectangle becomes luxury when I cackle near it.",
-            "A magnificent decision. The shareholders have upgraded from sinister chuckling to full thunderstorm."
+            "A magnificent decision. The shareholders have upgraded from sinister chuckling to full thunderstorm.",
+            "Marvelous! A Chinese spy shall be personally appointed to you as a bonus."
     );
     private static final List<String> REMOVAL = List.of(
             "You removed an item? Those database rows had families. Pay the imaginary relocation fee.",
@@ -137,9 +139,9 @@ public final class VillainRoaster {
         return lowMargin ? LOW_MARGIN : PREMIUM;
     }
 
-    private static boolean containsAny(String decision, String... fragments) {
-        for (String fragment : fragments) {
-            if (decision.contains(fragment)) return true;
+    private static boolean containsAny(String decision, String... substrings) {
+        for (String substring : substrings) {
+            if (decision.contains(substring)) return true;
         }
         return false;
     }
