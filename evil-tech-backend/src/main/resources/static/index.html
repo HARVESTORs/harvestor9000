@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<<<<<<< captcha-wip
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="theme-color" content="#0b0b0f"/>
@@ -1102,7 +1101,6 @@
             }
         }
     </style>
-=======
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="theme-color" content="#0b0b0f"/>
@@ -1974,7 +1972,6 @@
       }
     }
   </style>
->>>>>>> main
 </head>
 <body>
 <div class="sim-banner"><b>UNIVERSITY SIMULATION</b> · Fictional products, mock payments, fabricated persuasion. No real
@@ -2229,7 +2226,6 @@
 
 
 <script>
-<<<<<<< captcha-wip
     (() => {
         const $ = id => document.getElementById(id);
         const state = {
@@ -2451,7 +2447,6 @@
         function productCard(view) {
             const id = view.product.id, s = skinFor(view), price = priceFor(view), compare = view.fakeCompareAtPrice;
             return `<article class="product-card" data-category="${esc(s.category)}">
-=======
   (() => {
     const $ = id => document.getElementById(id);
     const state = {
@@ -2659,7 +2654,6 @@
     function productCard(view) {
       const id = view.product.id, s = skinFor(view), price = priceFor(view), compare = view.fakeCompareAtPrice;
       return `<article class="product-card" data-category="${esc(s.category)}">
->>>>>>> main
                         <div class="topline">
                             <span class="tag ${view.action === 'REDIRECT' ? 'red' : 'green'}">${esc(s.badge)}</span>
                             <span class="tag">${esc(view.action || 'DISPLAY')}</span>
@@ -2750,7 +2744,7 @@
                                 <button class="remove" data-remove-captcha="${esc(line.lineId)}">Remove + incur consequences</button>
                             </div>
                         </div>`
-<<<<<<< captcha-wip
+
             }).join('')
         }
 
@@ -2851,7 +2845,6 @@
             });
             state.quote = q;
             const fees = (q.fees || []).map(f => `
-=======
       }).join('')
     }
 
@@ -2946,7 +2939,6 @@
       });
       state.quote = q;
       const fees = (q.fees || []).map(f => `
->>>>>>> main
                     <div class="fee">
                         <span>${esc(f.label || f.code)}</span>
                         <strong>${esc(money(f.amount, q.currency || 'HUF'))}</strong>
@@ -2967,7 +2959,7 @@
                         <button class="primary" style="width:100%;margin-top:12px" id="commitCheckoutBtn">Place simulated order</button>
                     </div>`;
 
-<<<<<<< captcha-wip
+
             $('commitCheckoutBtn').onclick = () => checkout().catch(handle);
         }
 
@@ -3170,7 +3162,7 @@
                   os: $('os').value,
                   batteryPercent: raw === '' ? null : Number(raw),
                   charging: $('charging').checked
->>>>>>> main
+
                 }
               }).then(async () => {
                 toast('Synthetic context applied', 'Live quotes refreshed.');

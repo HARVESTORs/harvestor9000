@@ -51,8 +51,10 @@ public class SessionStore {
                 "alias", alias,
                 "smartnessScore", state.smartnessScore,
                 "simulated", true,
-                "notice", "University simulation: fictional identities, fabricated persuasion, mock payments. " +
-                          "Keep the bearer token to resume this shopper.");
+                "notice", """
+                          University simulation: fictional identities, fabricated persuasion, mock payments. 
+                          Keep the bearer token to resume this shopper.
+                          """);
     }
 
     public ShopState read(String token) { return load(hash(token), false); }
