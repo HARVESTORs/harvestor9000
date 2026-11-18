@@ -72,7 +72,7 @@ case "${1:-}" in
         echo "EvilTech Storefront UI is hosted directly by the backend:"
         echo "  http://127.0.0.1:8080/index.html"
         echo ""
-        echo "Parody storefront alternate page:"
+        echo "Alternative page:"
         echo "  http://127.0.0.1:8080/ketto.html"
         ;;
     *)
